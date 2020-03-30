@@ -1,0 +1,23 @@
+{
+	"company":"company_1",
+	"templates": {
+		"headline":["toggle_sponsored","remove_headline"],
+		"header-600-wide":["toggle_sponsored","remove_headline"],
+		"header-540-wide":["toggle_sponsored","remove_headline"],
+		"two-up-image":["toggle_sponsored","remove_headline"],
+		"one-up-image":["toggle_sponsored","remove_headline"],
+		"four-up-image":["toggle_sponsored","remove_headline"],
+		"divider":["toggle_sponsored","remove_headline"],
+		"events":["toggle_sponsored","remove_headline"],
+		"numbered-list":["toggle_sponsored","remove_headline"],
+		"signatures":["toggle_sponsored","remove_headline"],
+		"paragraph":["toggle_sponsored","remove_headline"]
+	},
+	"campaigns":{
+		"Top Things to Do":{
+			"headline":"TOP THINGS TO DO THIS WEEKEND",
+			"body_text":"Spend the upcoming weekend in San Diego enjoying everything California’s Beach City has to offer including these top things to do."
+		}
+	}
+	
+}

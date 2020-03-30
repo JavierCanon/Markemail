@@ -1,0 +1,33 @@
+version: 2.5.2.{build}
+os: Visual Studio 2017
+configuration: Debug
+platform: Any CPU
+
+branches:
+  only:
+  - master
+
+skip_tags: true
+
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: XvmOROcqgidalZg23H16UjDbAxIMkpuVXwKKPEp0bq3W5J2av35X1BsZvClM25JX
+
+install:
+  - cmd: git submodule update --init --recursive
+  - cmd: nuget restore submodules\MimeKit\MimeKit.Net45.sln
+  - cmd: nuget restore MailKit.Net45.sln
+
+build:
+  project: MailKit.Net45.sln
+  verbosity: minimal
+
+test_script:
+- ps: >-
+    regsvr32 .\packages\OpenCover.4.6.519\tools\x86\OpenCover.Profiler.dll
+
+    regsvr32 .\packages\OpenCover.4.6.519\tools\x64\OpenCover.Profiler.dll
+
+    .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -filter:"+[MailKit]* -[UnitTests]* -[submodules]*" -target:"packages\NUnit.Runners.2.6.4\tools\nunit-console.exe" -targetargs:"/framework:net-4.5 /noshadow /domain:single UnitTests\bin\Debug\UnitTests.dll" -output:opencover.xml
+
+    .\packages\coveralls.net.0.7.0\tools\csmacnz.Coveralls.exe --opencover -i opencover.xml --repoToken $Env:COVERALLS_REPO_TOKEN --useRelativePaths --basePath .\UnitTests\bin\Debug --commitId $env:APPVEYOR_REPO_COMMIT --commitBranch $env:APPVEYOR_REPO_BRANCH --commitAuthor $env:APPVEYOR_REPO_COMMIT_AUTHOR --commitEmail $env:APPVEYOR_REPO_COMMIT_AUTHOR_EMAIL --commitMessage $env:APPVEYOR_REPO_COMMIT_MESSAGE --jobId $env:APPVEYOR_BUILD_NUMBER --serviceName appveyor

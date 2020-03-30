@@ -1,0 +1,24 @@
+AppBundle\Entity\Product:
+    type: entity
+    table: product
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            nullable: false
+            column: name
+        sku:
+            type: string
+            length: 80
+            nullable: true
+            column: sku
+        price:
+            type: integer
+            nullable: false
+            column: price

@@ -1,0 +1,12 @@
+@mixin centered-block() {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+@mixin blur-this($radious) {
+  -webkit-filter: blur($radious);
+  -moz-filter: blur($radious);
+  -o-filter: blur($radious);
+  -ms-filter: blur($radious);
+  filter: blur($radious);
+}

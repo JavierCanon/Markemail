@@ -1,0 +1,45 @@
+/* -------------------------------------------
+Colour variables
+-------------------------------------------- */
+
+$link-color: #999999;
+
+
+/* -------------------------------------------
+Background of whole email colour
+-------------------------------------------- */
+
+$background-color: #ffffff;
+
+/* -------------------------------------------
+Font variables
+-------------------------------------------- */
+
+$font-heading: Georgia, sans-serif; // Heading font family
+$font-paragraph: Arial, sans-serif; // Paragraph font family
+
+$heading-color: #333; // Font colour of your heading
+$paragraph-color: #666666; // Font colour of your paragraph
+
+$paragraph-size: 14px; // Font size of your paragraph text
+$heading-size: 24px; // Font size of your heading
+$subheading-size: 18px; // Font size of your heading
+
+/* -------------------------------------------
+Default Button - Border based button
+-------------------------------------------- */
+
+$btn-font-size:18px;
+$btn-text-color:#FFF;
+$btn-boder-radius: 12px;
+$btn-bg-color:#021518;
+$btn-size:24px;
+
+/* -------------------------------------------
+Width Variables
+-------------------------------------------- */
+
+$email-width: 580px; // Suggested 640px is max -- 460px no column stacking on Litmus Gmail test...
+$padding: 10px;
+
+

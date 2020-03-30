@@ -1,0 +1,54 @@
+emailproject_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Emailproject:index" }
+    methods:  GET
+
+emailproject_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Emailproject:show" }
+    methods:  GET
+
+emailproject_new:
+    path:     /new
+    defaults: { _controller: "AppBundle:Emailproject:new" }
+    methods:  [GET, POST]
+
+emailproject_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AppBundle:Emailproject:edit" }
+    methods:  [GET, POST]
+
+emailproject_build:
+    path:     /{id}/build
+    defaults: { _controller: "AppBundle:Emailproject:build" }
+    methods:  [GET, POST]
+
+emailproject_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "AppBundle:Emailproject:delete" }
+    methods:  DELETE
+
+emailproject_delete_multiple:
+    path:     /deletemultiple
+    defaults: { _controller: "AppBundle:Emailproject:deleteMultiple" }
+    methods:  [GET, POST]
+
+emailproject_ajax:
+    path:     /ajax
+    defaults: { _controller: "AppBundle:Emailproject:ajax" }
+    methods:  [GET, POST]
+
+emailproject_make_event_layout:
+    path:     /make_event_layout
+    defaults: { _controller: "AppBundle:Emailproject:make_event_layout" }
+    methods:  [GET, POST]
+
+emailproject_list_build:
+    path:     /list_build
+    defaults: { _controller: "AppBundle:Emailproject:list_build" }
+    methods:  [GET, POST]
+
+emailproject_get_html:
+    path:     /get_html
+    defaults: { _controller: "AppBundle:Emailproject:get_html" }
+    methods:  [GET, POST]

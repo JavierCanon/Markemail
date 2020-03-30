@@ -1,0 +1,125 @@
+@white: #FEFEFE;
+@black: #111;
+@blue: darken(#428bca, 6.5%);
+a {
+	color: @blue;
+	text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+	color: darken(@blue, 10%);
+	text-decoration: none;
+}
+html, body {
+	background: @white;
+	color: @black;
+	margin: 0; padding: 0;
+}
+
+img {
+	border-style: none;
+	max-width: 100%;
+}
+
+table {
+	border-spacing: 0;
+	Margin: 0 auto !important;
+}
+
+td {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 16px;
+	padding: 16px ;
+	text-align: left;
+}
+
+.btn {
+	padding: 16px 8px;
+	border: 1px solid lighten(@black, 5%);
+	color: lighten(@black, 5%);
+}
+
+.jumbotron {
+	background: #EFEFFE;
+	.title {
+		padding: 16px 0;
+	}
+	.subheading {
+		padding: 16px 0;
+	}
+}
+
+.container {
+	width: 100%;
+	max-width: 600px;
+	Margin: 0 auto;
+	text-align: center;
+}
+.container-fluid {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.title {
+	font-size: 48px;
+}
+
+.subheading {
+	font-size: 36px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+/*Navbar */
+.navbar td {
+	padding: 16px;
+}
+.navbar-default {
+	background: @white;
+	color: @black;
+	a {
+		color: @black;
+		&:hover {
+			color: lighten(@black, 15%);
+		}
+		&:focus {
+					color: lighten(@black, 15%);
+		}
+		&:active {
+			color: lighten(@black, 15%);
+		}
+	}
+}
+.navbar-inverse {
+	background: @black;
+	color: @white;
+	a {
+		color: @white;
+		&:hover {
+			color: darken(@white, 15%);
+		}
+		&:focus {
+			color: darken(@white, 15%);
+		}
+		&:active {
+			color: darken(@white, 15%);
+		}
+	}
+}
+
+@media only screen and (max-width: 480px){
+	td {
+		display: block !important;
+	}
+}

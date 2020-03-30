@@ -1,0 +1,30 @@
+.input.button, input.button, input[type=submit]{
+	padding:10px 25px;
+	background:#ddd;
+	border-radius:6px;
+	margin:9px;
+	background:linear-gradient(180deg, #007dc1 15%, #0061a7);
+	border: 1px solid #124d77;
+	color: #eee;
+	cursor:pointer;
+
+
+}
+.button.subtle, input[type=password]{
+	background:linear-gradient(180deg, #efefef 5%, #fff);
+	color:#000;
+	border:1px solid #ddd;
+}
+.input.button:hover, input.button:hover, input[type=submit]:hover {
+	color: #0fa0ce;
+  
+  color:$veryLightBlue;
+	background:linear-gradient(180deg, #0061a7 5%,  #007dc1);
+}
+.button{
+	vertical-align:middle;
+}
+a.button{
+  text-decoration:none;
+  display:inline-block;
+}

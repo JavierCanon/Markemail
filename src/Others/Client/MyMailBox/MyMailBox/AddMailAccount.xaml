@@ -1,0 +1,226 @@
+﻿<Window x:Class="MyMailBox.AddMailAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyMailBox"
+        mc:Ignorable="d"
+        Title="Ajouter un compte email"
+        MinWidth="400"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize">
+
+    <StackPanel
+        Margin="15"
+        Orientation="Vertical">
+
+        <StackPanel
+            x:Name="frameStep1"
+            Orientation="Vertical">
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5">
+                <Bold>Ton email : </Bold>
+            </TextBlock>
+
+            <TextBox
+                x:Name="emailUserBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7"
+                InputScope="EmailSmtpAddress" />
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5">
+                <Bold>Ton mot de passe : </Bold>
+            </TextBlock>
+
+            <PasswordBox
+                x:Name="passwordUserBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7"
+                InputScope="Password" />
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5">
+                <Bold>Ton nom :</Bold><LineBreak />
+                <Run Foreground="#7A7574">(comme il sera sur les emails que tu envoies) </Run>
+            </TextBlock>
+
+            <TextBox
+                x:Name="nameUserBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7"
+                InputScope="PersonalFullName" />
+
+            <CheckBox
+                BorderBrush="#0078D7"
+                Margin="5"
+                x:Name="rememberPasswordBox">
+                Retenir le mot de passe
+            </CheckBox>
+
+        </StackPanel>
+
+        <StackPanel
+            x:Name="frameStep2"
+            Visibility="Collapsed"
+            Orientation="Horizontal">
+
+            <TextBlock
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="5">
+                <Bold>Patiente !</Bold> Je teste la connexion à ton serveur de mail...
+            </TextBlock>
+
+        </StackPanel>
+
+        <StackPanel
+            x:Name="frameStep3"
+            Visibility="Collapsed"
+            Orientation="Vertical">
+
+            <TextBlock
+                x:Name="TitleStep3"
+                HorizontalAlignment="Center"
+                Margin="5, 10, 0, 0"
+                FontSize="20"
+                FontWeight="Bold"
+                Text="Vérifies tes informations de connexion :" />
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5, 15, 5, 5"
+                Text="Ton nom" />
+
+            <TextBox
+                x:Name="nameConfirmBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7" />
+            
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5, 15, 5, 5"
+                Text="Ton identité sur le serveur :" />
+
+            <TextBox
+                x:Name="identityConfirmBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7" />
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5, 15, 5, 5"
+                Text="Ton serveur de mail :" />
+
+            <TextBox
+                x:Name="serverConfirmBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7" />
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5, 15, 5, 5"
+                Text="Le port :" />
+
+            <TextBox
+                x:Name="portConfirmBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7" />
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5, 15, 5, 5"
+                Text="Utilise tu le SSL (oui par défaut) : " />
+
+            <CheckBox
+                x:Name="SSLConfirmCheck"
+                IsChecked="True"
+                BorderBrush="#0078D7"
+                Margin="5">
+                Utilisation du SSL
+            </CheckBox>
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Margin="5"
+                Text="Ton mot de passe :" />
+
+            <PasswordBox
+                x:Name="passwordConfirmBox"
+                Margin="5"
+                Background="White"
+                BorderBrush="#0078D7"
+                InputScope="Password" />
+
+            <CheckBox
+                x:Name="passwordRememberConfirmCheck"
+                IsChecked="False"
+                BorderBrush="#0078D7"
+                Margin="5">
+                Se souvenir du mot de pase
+            </CheckBox>
+
+            <Button
+                x:Name="validateButtonConfirm"
+                Content="Valider"
+                Margin="5"
+                Click="validateButtonClick" />
+
+        </StackPanel>
+
+        <StackPanel
+            Orientation="Vertical"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            x:Name="frameStep4"
+            Visibility="Collapsed">
+
+            <TextBlock
+                Text="Super ! Cette étape est terminé. Revenons maintenant au principal !"
+                FontWeight="Bold" />
+
+            <Button
+                x:Name="finalValidateButton"
+                Content="Finir cette périllieuse étape"
+                HorizontalAlignment="Center"
+                Margin="15"
+                Click="finalValidateClick" />
+        </StackPanel>
+
+        <Grid Margin="20">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Button
+                x:Name="NextButton"
+                Content="Suivant"
+                MinWidth="110"
+                Grid.Column="2"
+                Click="NextActionAddAccount" />
+
+            <Button
+                x:Name="CancelButton"
+                Content="Annuler"
+                MinWidth="110"
+                Grid.Column="0"
+                Click="CancelActionAddAccount" />
+
+        </Grid>
+    </StackPanel>
+</Window>
+

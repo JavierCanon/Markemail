@@ -1,0 +1,59 @@
+textarea {
+	width: 100%;
+}
+.width100,
+input[type=text], 
+input[type=number] {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%; 
+  background:#f5f5f5;
+  }
+input.hasHeight {
+	height: 265px;
+	background: url(../images/imagePlaceholder.jpg) no-repeat 50%;
+	background-size: 100%;
+}
+input {
+	margin-bottom: 15px;
+}
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=url],
+select,
+textarea {
+	padding: 3px;
+	border: 1px solid #ddd;
+}
+textarea {
+	min-height: 65px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=search]:focus,
+input[type=tel]:focus,
+input[type=text]:focus,
+input[type=url]:focus,
+select:focus,
+textarea:focus {
+  background: #ebebeb;
+  outline: 0;
+  border:1px solid #777;}
+form label{
+  display:block;
+  margin-top:20px;
+  margin-bottom:5px;
+  font-weight:bold;
+}
+form div{
+  width:100%;
+  margin-bottom:7px;
+}

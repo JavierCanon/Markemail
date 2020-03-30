@@ -1,0 +1,39 @@
+{
+  "name": "mailgrid",
+  "version": "1.0.0",
+  "description": "A gulp workflow for easing the creation of HTML emails",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rapidwebltd/MailGrid.git"
+  },
+  "keywords": [
+    "GulpJS",
+    "Email"
+  ],
+  "author": "Rapid Web Ltd",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rapidwebltd/MailGrid/issues"
+  },
+  "homepage": "https://github.com/rapidwebltd/MailGrid",
+  "devDependencies": {
+    "browser-sync": "^1.8.1",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-inline-source": "^1.1.0",
+    "gulp-less": "^3.0.5",
+    "gulp-mc-inliner": "0.0.4",
+    "gulp-util": "^3.0.3",
+    "htmlstrip-native": "^0.1.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "mailchimp": "^1.1.0",
+    "nodemailer": "^1.3.1",
+    "through2": "^0.6.5",
+    "tiny-lr": "^0.1.4"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <!-- Inject stylesheets after they are processed with LESS, SASS or postcss. -->
+  <!-- @echo stylesheets -->
+
+  <style type="text/css">
+  /* Ideally, this would be part of a linked CSS file. @see https://github.com/fadeit/responsive-html-email-signature/issues/15 */
+
+  /*
+   * ================
+   * 4. Basic responsive stuff.
+   * ================
+   */
+  @media only screen and (max-width:480px){
+    .footer td{
+      font-size: 12px!important;
+    }
+
+    .footer__main__col1{
+      width: 100%!important;
+    }
+
+    .footer__main__col2{
+      width: 100%!important;
+    }
+
+    .footer__main__col2__td{
+      text-align: left;
+      padding-bottom:20px;
+    }
+
+    .footer__main__col2__td__img{
+      padding-left:0!important;
+    }
+
+    .gray-hr hr{
+      margin-bottom:10px!important;
+      margin-top:10px!important;
+    }
+  }
+
+  @media only screen and (min-width:1025px){
+    /* After iPad size */
+    .body-with-bg{
+      background-color: #F1F1F1;
+    }
+
+    .body-with-bg .main{
+      border:1px solid #E9E9E9!important; /* Sorry! */
+      max-width:960px;
+      margin:0 auto;
+    }
+
+    .background{
+      padding:30px;
+      background-color: #F1F1F1;
+    }
+  }
+  </style>
+</head>

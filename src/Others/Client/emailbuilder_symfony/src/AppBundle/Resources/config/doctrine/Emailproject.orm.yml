@@ -1,0 +1,46 @@
+AppBundle\Entity\Emailproject:
+    type: entity
+    table: projects
+    repositoryClass: AppBundle\Repository\EmailprojectRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: 60
+        body:
+            type: text
+        email:
+            type: string
+            length: 60       
+        exacttarget_id:
+            type: integer
+            length: 10
+        title:
+            type: string
+            length: 60
+        company:
+            type: string
+            length: 60
+        source: 
+            type: string
+            length: 60
+        campaign:
+            type: string
+            length: 60
+        medium:
+            type: string
+        term:
+            type: string
+            length: 60
+        content:
+            type: string
+            length: 60
+        date_modified:
+            type: datetime
+    lifecycleCallbacks: {  }
+

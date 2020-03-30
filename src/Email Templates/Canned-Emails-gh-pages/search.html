@@ -1,0 +1,17 @@
+---
+layout: page
+title: Search Canned Emails
+subtitle: search for a prewritten email
+path: search
+---
+
+<div id="filter-form"></div>
+
+<ul class="list-posts">
+  {% for post in site.posts %}
+  <li class="post-teaser">
+    <a href="{{ post.url | prepend: site.baseurl }}" title="{{ post.title }}" class="post-teaser__title">{{ post.title }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>

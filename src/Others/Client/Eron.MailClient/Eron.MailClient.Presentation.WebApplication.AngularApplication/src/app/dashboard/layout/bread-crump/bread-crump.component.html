@@ -1,0 +1,31 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-md-6">
+    <h2>{{BreadCrump.Title}}</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a [routerLink]="BreadCrump.FirstNode.Url">{{BreadCrump.FirstNode.Name}}</a>
+      </li>
+      <li *ngIf="BreadCrump.SecondNode">
+        <a [routerLink]="BreadCrump.SecondNode.Url">{{BreadCrump.SecondNode.Name}}</a>
+      </li>
+      <li *ngIf="BreadCrump.ThirdNode" class="active">
+        <strong>{{BreadCrump.ThirdNode.Name}}</strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-md-6">
+    <div class="title-action">
+      <ng-template ngFor let-button [ngForOf]="BreadCrump.Button">
+        <a *ngIf="button.ExternalUrl" href="{{button.Url|async}}" [ngClass]="button.ButtonClass">
+          <i [ngClass]="button.ButtonIconClass"></i>
+          {{button.ButtonText}}
+        </a>
+
+        <a *ngIf="!button.ExternalUrl" [routerLink]="button.Url" [ngClass]="button.ButtonClass">
+          <i [ngClass]="button.ButtonIconClass"></i>
+          {{button.ButtonText}}
+        </a>
+      </ng-template>
+    </div>
+  </div>
+</div>

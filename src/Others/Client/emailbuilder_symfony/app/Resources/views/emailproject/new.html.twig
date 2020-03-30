@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+  <div class="row">
+  <div class="cols_12-8">
+    <h2>New Email Project</h2>
+
+
+    {{ form_start(form) }}
+    
+    <div>
+        {{ form_label(form.title)}}
+        {{ form_widget(form.title)}}</div>
+        <hr>
+        <div class="form_section">
+        <h3>Google Analytics Campaign tags</h3>
+        <p>If you plan to tag your links with Google Campaign parameters, include those here. If you need to change something later don't worry, these can be customized later for each block on the build page. <br>
+<br>
+For more information visit Google's 
+<a href="https://ga-dev-tools.appspot.com/campaign-url-builder/">Campaign URL Builder</a></p>
+        </div>
+    
+    
+    <div>
+ {{ form_label(form.campaign) }} Product, promo code, or slogan (e.g. spring_sale)</div>
+        {{ form_widget(form.campaign)}}
+        
+        
+        <div>
+       {{ form_label(form.source)}} The referrer (e.g. google, newsletter)</div>
+        {{ form_widget(form.source)}}
+        
+        <div>
+        {{ form_label(form.medium)}}Marketing medium (e.g. cpc, banner, email)</div>
+        {{ form_widget(form.medium)}}
+        
+        <div>
+        {{ form_label(form.term)}} Identify the paid keywords</div>
+        {{ form_widget(form.term)}}      
+        
+        <div>
+        {{ form_label(form.content)}} Use to differentiate ads</div>
+        {{ form_widget(form.content)}}        
+        
+        
+         <div class="form_section">
+        <h4>Email Service Email ID Number</h4>
+        <p>This is currently only set up to work with ExactTarget. If your email is already set up in the email system, enter the email ID here so that you can synchronize your email to your email system.</p>
+        </div>
+        
+      {{ form_label(form.exacttarget_id)}}
+      {{ form_widget(form.exacttarget_id)}}
+      
+      
+        
+        <br>
+
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+   
+   
+    
+    
+
+    <ul>
+        <li>
+            <a href="{{ path('emailproject_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    </div>
+    </div>
+
+{% endblock %}

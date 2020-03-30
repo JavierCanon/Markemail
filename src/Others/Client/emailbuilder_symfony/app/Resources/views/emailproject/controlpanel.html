@@ -1,0 +1,63 @@
+<div id="control_panel" class="control_panel">
+<div id="resize_control_panel" class="open resize_control_panel">
+<div class="drag_handles_w"><p></p><p></p><p></p></div>
+<div id="minimize_control_panel" class="minimize_control_panel"><i class="fa fa-chevron-down"></i></div>
+
+
+
+{#
+{% for module in modules %}
+read JSON file in controller and pass it to here
+
+for each module in modules
+
+we need that path thing below
+path('meailproject)
+#}
+
+{% for moduleName in moduleNames %}
+<a href="link" id="{{ moduleName }}" class="fullhtml" data-module="{{ moduleName }}" data-company="{{emailproject.company}}" >
+	<img src="/company/{{emailproject.company}}/{{moduleName}}.icn.gif" /></a>
+
+
+
+{% endfor %}
+
+{#
+
+
+	//get company from database
+	//some mysql query, fill in later
+	//check who is logged in and pull from their table
+	$company = "company_1";
+
+	$jsonfile = file_get_contents('company/'.$company.'/_templates.json');
+	$company_details = json_decode($jsonfile, true);
+
+	$templateNames = array_keys($company_details['templates']);
+
+
+
+foreach($templateNames as $module){
+	$folder = 'company/'.$company_details['company']."/";
+	switch($module){
+		case "events-build":
+		case "freeform":$popup = "popup";$link=$folder.'index.php';break;
+		default:$link=$folder.$module.'.php';$popup="";break;
+	}
+
+
+	echo '<a href="'.$link.'" id="'.$module.'" class="'.$popup.' fullhtml" data-module="'.$module.'" data-company="'.$company_details['company'].'">
+	<img src="company/'.$company_details['company']."/templates/".$module.'.icn.gif" /></a>';
+
+}
+
+
+
+#}
+
+
+
+
+</div>
+</div>

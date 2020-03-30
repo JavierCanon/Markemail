@@ -1,0 +1,13 @@
+{
+  "name": "sass",
+  "version": "1.0.0",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-premailer": "^0.2.13",
+    "grunt-processhtml": "^0.3.8",
+    "grunt-strip-css-comments": "^1.2.0",
+    "grunt-uncss": "^0.4.4"
+  }
+}

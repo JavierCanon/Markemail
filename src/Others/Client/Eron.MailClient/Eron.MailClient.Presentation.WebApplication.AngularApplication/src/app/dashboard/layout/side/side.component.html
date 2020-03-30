@@ -1,0 +1,52 @@
+﻿<nav class="navbar-default navbar-static-side" role="navigation">
+  <div class="sidebar-collapse">
+    <ul class="nav metismenu" id="side-menu">
+      <li class="nav-header">
+        <div class="dropdown profile-element">
+          <span>
+            <img alt="image" class="img-circle" src="assets/img/profile_small.jpg" />
+          </span>
+          <a data-toggle="dropdown" class="dropdown-toggle" routerLink="/">
+            <span class="clear">
+              <span class="block m-t-xs">
+                <strong class="font-bold">{{userName}}</strong>
+              </span>
+              <span class="text-muted text-xs block">مدیریت
+                <b class="caret"></b>
+              </span>
+            </span>
+          </a>
+          <ul class="dropdown-menu animated fadeInLeft m-t-xs">
+            <li>
+              <a routerLink="login">خروج</a>
+            </li>
+          </ul>
+        </div>
+        <div class="logo-element">
+          Ch+
+        </div>
+      </li>
+      <li routerLinkActive="active" *ngFor="let menuItem of MenuList" #rla="routerLinkActive">
+        <a *ngIf="menuItem.Children" style="cursor: pointer;">
+          <i *ngIf="menuItem.Icon" [ngClass]="menuItem.Icon"></i>
+          <span class="nav-label">{{menuItem.Name}}</span>
+          <span class="fa arrow"></span>
+        </a>
+        <a *ngIf="!menuItem.Children" routerLink="{{menuItem.Children ? '' : menuItem.Path}}">
+          <i *ngIf="menuItem.Icon" [ngClass]="menuItem.Icon"></i>
+          <span class="nav-label">{{menuItem.Name}}</span>
+          <span *ngIf="menuItem.Children" class="fa arrow"></span>
+        </a>
+        <ul *ngIf="menuItem.Children" [ngClass]="{ 'in': rla.isActive, 'nav': true, 'nav-second-level': true }">
+          <li routerLinkActive="active" *ngFor="let secondLevelMenuItem of menuItem.Children">
+            <a routerLink="{{secondLevelMenuItem.Path}}">
+              <i *ngIf="secondLevelMenuItem.Icon" [ngClass]="secondLevelMenuItem.Icon"></i>
+              {{secondLevelMenuItem.Name}}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+</nav>

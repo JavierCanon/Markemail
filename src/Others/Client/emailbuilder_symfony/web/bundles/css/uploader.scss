@@ -1,0 +1,105 @@
+.cropbox {
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
+	background: #000;
+}
+.cropbox .close {
+	padding: 10px 15px;
+	background: red;
+}
+
+#viewport_height {
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	height: 50%;
+}
+.viewport_height_value {
+	margin-left: 30px;
+	color: #fff;
+}
+
+/*CAN'T FIGURE OUT WHAT THESE BELOW ARE FOR*/
+.pln {
+	color: #000;
+}
+
+@media screen {
+.str {
+	color: #080;
+}
+.kwd {
+	color: #008;
+}
+.com {
+	color: #800;
+}
+.typ {
+	color: #606;
+}
+.lit {
+	color: #066;
+}
+.clo,
+.opn,
+.pun {
+	color: #660;
+}
+.tag {
+	color: #008;
+}
+.atn {
+	color: #606;
+}
+.atv {
+	color: #080;
+}
+.dec,
+.var {
+	color: #606;
+}
+.fun {
+	color: red;
+}
+}
+
+@media print, projection {
+.str {
+	color: #060;
+}
+.kwd {
+	font-weight: 700;
+	color: #006;
+}
+.com {
+	font-style: italic;
+	color: #600;
+}
+.typ {
+	font-weight: 700;
+	color: #404;
+}
+.lit {
+	color: #044;
+}
+.clo,
+.opn,
+.pun {
+	color: #440;
+}
+.tag {
+	font-weight: 700;
+	color: #006;
+}
+.atn {
+	color: #404;
+}
+.atv {
+	color: #060;
+}
+}

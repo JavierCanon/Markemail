@@ -1,0 +1,21 @@
+.text {
+  font-size:$paragraph-size;
+  font-family:$font-paragraph;
+  color: $paragraph-color!important;
+  padding-top: $padding;
+  text-decoration: none!important;
+}
+.heading{
+  font-family:$font-heading;
+  color: $heading-color;
+  font-weight: bold;
+  padding-bottom: $padding;
+}
+.h1 {
+  @extend .heading;
+  font-size:$heading-size;
+}
+.h2{
+  @extend .heading;
+  font-size:$subheading-size;
+}

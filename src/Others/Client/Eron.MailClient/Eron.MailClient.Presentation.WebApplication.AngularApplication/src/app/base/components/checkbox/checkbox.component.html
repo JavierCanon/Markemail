@@ -1,0 +1,6 @@
+<div class="checkbox checkbox-{{status}}">
+    <input [id]="id" type="checkbox" (change)="changed($event)" [checked]="checked" [name]="name">
+    <label [for]="id">
+        {{label}}
+    </label>
+</div>

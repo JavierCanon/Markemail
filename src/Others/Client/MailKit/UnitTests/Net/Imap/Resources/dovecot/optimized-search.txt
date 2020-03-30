@@ -1,0 +1,2 @@
+* ESEARCH (TAG "A########") UID ALL 1:7
+A######## OK Search completed (0.001 + 0.000 secs).

@@ -1,0 +1,16 @@
+﻿<Window x:Class="EmailClient.Dialogs.SwitchUserDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EmailClient.Dialogs"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        Title="Select User" Height="143.2" Width="305.6">
+    <Grid>
+        <ComboBox x:Name="userList" HorizontalAlignment="Left" Margin="78,28,0,0" VerticalAlignment="Top" Width="199" Text="Visibility"/>
+        <Label Content="Users: " HorizontalAlignment="Left" Margin="15,25,0,0" VerticalAlignment="Top" Width="58"/>
+        <Button x:Name="OkBtn" Content="Ok" HorizontalAlignment="Left" Margin="74,72,0,0" VerticalAlignment="Top" Width="75" Click="OkBtn_Click"/>
+        <Button x:Name="CancelBtn" Content="Cancel" HorizontalAlignment="Left" Margin="166,72,0,0" VerticalAlignment="Top" Width="75" Click="CancelBtn_Click"/>
+    </Grid >
+</Window>

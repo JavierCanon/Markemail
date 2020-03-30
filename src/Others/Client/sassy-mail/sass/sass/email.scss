@@ -1,0 +1,93 @@
+@import "client-fixes";
+@import "variables"; 
+@import "mixins";
+@import "grid";
+@import "typography";
+@import "media-queries";
+@import "sidebar";
+/* -------------------------------------------
+        Basic
+ -------------------------------------------- */
+body {
+  background-color: $background-color;
+  Margin:0!important; 
+  /* Caps For Outlook (? https://www.campaignmonitor.com/blog/post/3921/outlook.com-drops-margin-and-float-support-entirely */
+  padding:0;
+  min-width: 100%;
+}
+table {
+  border-spacing: 0;
+  font-family: $font-paragraph;
+  color: $paragraph-color;
+}
+td {
+  padding: 0;
+}
+img {
+  border: 0;
+}
+p {
+  Margin: 0;
+}
+a {
+  color: $link-color;
+  text-decoration: underline;  
+  font-weight: bold;
+}
+/* -------------------------------------------
+        Basic - Layout
+ -------------------------------------------- */
+.wrapper {
+  width: 100%;
+  table-layout: fixed;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+.webkit {
+  max-width: $email-width
+}
+.outer {
+  Margin: 0 auto;
+  width: 100%;
+  max-width: $email-width;
+}
+.contents {
+  width: 100%;
+  text-align: center;
+  font-size: $paragraph-size;
+}
+.inner {
+  padding: $padding; 
+}
+.footer{
+  width:100%!important;
+  min-width: 100%!important;
+  background-color: #EEE;
+}
+/* -------------------------------------------
+       Modules
+-------------------------------------------- */
+
+.full-width-image img {
+  width: 100%;
+  max-width: $email-width;
+  height: auto;
+}
+.nav td { 
+    padding: $padding;
+    a{
+        text-decoration: none;
+        padding: $padding;
+        font-size: 16px;
+    }
+}
+
+//Buttons - Feel free to duplicate/add as many as you like.
+//Add class to <td> containing <a> tag
+
+.button a{
+  @include button-generator($btn-font-size,$btn-text-color,$btn-boder-radius,$btn-bg-color,$btn-size);
+}
+.small-button a{
+  @include button-generator(14px, #FFF, 5px, #649664, 6px);
+}

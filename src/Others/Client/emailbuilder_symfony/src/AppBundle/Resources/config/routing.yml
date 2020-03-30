@@ -1,0 +1,46 @@
+app_user:
+    resource: "@AppBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+app_emailproject:
+    resource: "@AppBundle/Resources/config/routing/emailproject.yml"
+    prefix: /emailproject
+
+contact:
+    path: /contact
+    defaults: { _controller: AppBundle:Default:contact }
+		
+homepage:
+  path: /
+  defaults: { _controller: AppBundle:Default:index }
+
+product_overview:
+  path: /products
+  defaults: { _controller: AppBundle:Product:overview }
+  
+product_add:
+  path: /products/add
+  methods: [POST]
+  defaults: { _controller: AppBundle:Product:add}
+  
+emailproject_add:
+  path: /emailproject/new
+  defaults: { _controller: AppBundle:Emailproject:new} 
+  
+build_email:
+  path: /buildemail
+  defaults: { _controller: AppBundle:Buildemail:overview}  
+  
+login:
+  path: /login
+  defaults: { _controller: AppBundle:Security:login}
+  
+login_check:
+  path: /login_check
+  
+launchpad:
+  path: /launchpad
+  defaults: { _controller: AppBundle:Launchpad:index }
+
+lucky_number:
+  path: /luckynumber
+  defaults: { _controller: AppBundle:Lucky:number}

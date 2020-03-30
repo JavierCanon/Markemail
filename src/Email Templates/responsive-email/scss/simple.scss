@@ -1,0 +1,139 @@
+$base-color: #f8f8f8;
+$action-color: #71bc37;
+$footer-color: #888;
+
+// Global
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-family: 'Avenir Next', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  line-height: 1.65;
+}
+
+img {
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+body,
+.body-wrap {
+  width: 100% !important;
+  height: 100%;
+  background: $base-color;
+}
+
+a {
+  color: $action-color;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+// Button
+.button {
+  display: inline-block;
+  color: white;
+  background: $action-color;
+  border: solid $action-color;
+  border-width: 10px 20px 8px;
+  font-weight: bold;
+  border-radius: 4px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 20px;
+  line-height: 1.25;
+}
+h1 {
+  font-size: 32px;
+}
+h2 {
+  font-size: 28px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 16px;
+}
+
+p, ul, ol {
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+// layout
+.container {
+  display: block !important;
+  clear: both !important;
+  margin: 0 auto !important;
+  max-width: 580px !important;
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse;
+  }
+
+  .masthead {
+    padding: 80px 0;
+    background: $action-color;
+    color: white;
+
+    h1 {
+      margin: 0 auto !important;
+      max-width: 90%;
+      text-transform: uppercase;
+    }
+  }
+
+  .content {
+    background: white;
+    padding: 30px 35px;
+
+    &.footer {
+      background: none;
+
+      p {
+        margin-bottom: 0;
+        color: $footer-color;
+        text-align: center;
+        font-size: 14px;
+      }
+
+      a {
+        color: $footer-color;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,186 @@
+---
+---
+@charset "utf-8";
+
+/* =Colors */
+$dorian: #FCFCFC;
+$iron: #333333;
+$cloudy: #828282;
+
+// Night
+$ndorian: #2e2e2e;
+$niron: #CCCCCC;
+$ncloudy: #828282;
+
+
+@import "mixins", "default", "404";
+@import url(http://fonts.googleapis.com/css?family=Inconsolata|PT+Sans|PT+Sans+Narrow:700);
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}
+[hidden] {
+  display: none;
+}
+html {
+  font-family: 'PT Sans', sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+small {
+  font-size: 80%;
+}
+html {
+  font-family: 'PT Sans', sans-serif;
+}
+pre,
+code {
+  font-family: 'Inconsolata', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-weight: 700;
+}
+body {
+  background-color: #fdf6e3;
+  margin: 0 auto;
+}
+code {
+  background-color: #eee8d5;
+  padding: 2px;
+}
+a {
+  color: #b58900;
+}
+a:visited {
+  color: #cb4b16;
+}
+a:hover {
+  color: #cb4b16;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #859900;
+}
+pre {
+  background-color: #fdf6e3;
+  color: #657b83;
+  border: 1pt solid #93a1a1;
+  padding: 1em;
+  box-shadow: 5pt 5pt 8pt #eee8d5;
+}
+pre code {
+  background-color: #fdf6e3;
+}
+h1 {
+  font-size: 1.2em;
+  margin: 0;
+  color: #d33682;
+}
+h2 {
+  font-size: 1.1em;
+}
+h3 {
+  font-size: 1.0em;
+}
+h4 {
+  font-size: 0.8em;
+}
+h5 {
+  font-size: 0.5em;
+}
+h6 {
+  font-size: 0.2em;
+}
+.send-links {
+  text-align: center;
+  color: #d33682;
+}
+h2.description {
+  font-size: 0.9em;
+  font-weight: normal;
+  margin-top: 0;
+}
+input[type="search"]:focus,
+input[type="search"]:active {
+  outline: 0 none;
+}
+#filter-form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.searchTerm {
+  width: 90%;
+  border: 3px solid #859900;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #859900;
+  margin-bottom: 25px;
+}
+
+.searchTerm:focus{
+  color: #d33682;
+}
+
+#search .explore {
+  margin-bottom: 15px !important;
+}

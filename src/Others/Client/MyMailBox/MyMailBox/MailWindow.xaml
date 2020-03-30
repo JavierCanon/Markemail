@@ -1,0 +1,97 @@
+﻿<Window x:Class="MyMailBox.MailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyMailBox"
+        mc:Ignorable="d"
+        Title="MailWindow" Height="Auto" Width="Auto">
+    
+    <DockPanel LastChildFill="True">
+        <Grid
+            Margin="5"
+            DockPanel.Dock="Top">
+            <Grid.Resources>
+                <Style x:Key="MarginColumnElement" TargetType="FrameworkElement">
+                    <Setter Property="Margin" Value="0,0,4,0" />
+                </Style>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource MarginColumnElement}"/>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Text="De"
+                HorizontalAlignment="Right"
+                Foreground="Gray"
+                Grid.Column="0"
+                Grid.Row="0"/>
+            <TextBlock
+                x:Name="FromBlock"
+                Text="blablabla"
+                Grid.Column="1"
+                Grid.Row="0"/>
+
+            <TextBlock
+                Text="Sujet"
+                Foreground="Gray"
+                HorizontalAlignment="Right"
+                Grid.Column="0"
+                Grid.Row="1"/>
+            <TextBlock
+                x:Name="SubjectBlock"
+                Text="blablabla"
+                Grid.Column="1"
+                Grid.Row="1"/>
+
+            <TextBlock
+                Text="Pour"
+                HorizontalAlignment="Right"
+                Foreground="Gray"
+                Grid.Column="0"
+                Grid.Row="2"/>
+            <TextBlock
+                x:Name="ToBlock"
+                Text="blablabla"
+                Grid.Column="1"
+                Grid.Row="2"/>
+
+            <StackPanel
+                Orientation="Horizontal"
+                Grid.Column="2"
+                HorizontalAlignment="Right">
+
+                <Button
+                    x:Name="AnswerMailButton"
+                    Content="Répondre"/>
+                <Border Width="3"/>
+                <Button
+                    x:Name="AnswerAllMailButton"
+                    Content="Répondre à tous"/>
+                <Border Width="3"/>
+                <Button
+                    x:Name="DeleteMailButton"
+                    Content="Supprimer"/>
+                <Border Width="3"/>
+                <Button
+                    x:Name="TransferMailButton"
+                    Content="Transférer"/>
+
+            </StackPanel>
+            
+        </Grid>
+
+        <WebBrowser
+            x:Name="MailContentWebView"
+            DockPanel.Dock="Bottom"/>
+
+    </DockPanel>
+</Window>

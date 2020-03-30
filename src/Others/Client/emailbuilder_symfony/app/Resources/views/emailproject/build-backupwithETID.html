@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block title%}Build your email{% endblock%}
+{% block body %}
+
+<div class="saved">Project Saved</div>
+  <div class="row">
+   <div class="first-col cols_12-6">
+
+    <h3> {{ emailproject.title }}</h3>
+  
+    </div>
+    <div class="cols_12-6">
+      <a class="button" id="grabTheCode">Grab the Code!</a>
+      <a class="button" id="saveProject">Save</a> 
+      <a class="button" id="clearContainer">Clear Container!</a> 
+    </div>    
+  </div>
+
+
+<div class="row"> 
+  
+  {# include 'emailproject/gatags.html' #}
+                  
+  {#
+<div>
+ <label for="appbundle_emailproject_exacttarget_id" class="required">Exacttarget id</label><input type="number" id="appbundle_emailproject_exacttarget_id" name="appbundle_emailproject[exacttarget_id]" required="required" maxlength="10" value="152047">
+ </div>                                                                                                      
+  
+  #}
+  
+  
+  
+  
+</div>
+
+
+<div id="load" >
+  <div id="loadContent"></div>
+</div>
+{% include 'emailproject/controlpanel.html' with {'modules':'modules'} %}
+{% include 'emailproject/cropbox.html' %}
+
+
+
+<div class="row" style="padding-top:20px;border-top:1px solid #ddd;background:url('http://image.exct.net/lib/fe6e15707166047a7715/m/1/sdta_nl_small_texture.png');">
+  <div class="first-col cols_12-12">
+    <main id="container" class="container">
+     
+  
+     
+     {% if emailproject.body is empty %}<span class="empty">No HTML yet. Get to work!{% endif %}
+      
+      {{ emailproject.body|raw }}
+      
+      {% if emailproject.body is empty %}</span>{% endif %}
+      
+    </main>
+
+  </div>
+</div>
+</form>
+{% endblock %} 

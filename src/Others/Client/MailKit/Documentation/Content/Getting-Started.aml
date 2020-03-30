@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="Getting-Started" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <autoOutline />
+    </introduction>
+
+    <section address="InstallingViaNuGet">
+      <title>Adding MailKit to your project via NuGet</title>
+      <content>
+        <para>
+          In <application>Visual Studio</application>'s
+          <externalLink>
+            <linkText>Package Manager Console</linkText>
+            <linkUri>http://docs.nuget.org/docs/start-here/using-the-package-manager-console</linkUri>
+          </externalLink>, enter the following command:
+        </para>
+        <para>
+          <command>Install-Package MailKit</command>
+        </para>
+      </content>
+    </section>
+
+    <section address="BuildingFromSource">
+      <title>Building MailKit from Source</title>
+      <content>
+        <para>
+          First, you'll need to clone <application>MailKit</application> from the
+          <externalLink>
+            <linkText>GitHub</linkText>
+            <linkUri>https://github.com/jstedfast</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink> repository:
+        </para>
+        <para>
+          <command>git clone https://github.com/jstedfast/MailKit.git</command>
+        </para>
+        <para>
+          Then, since <application>MailKit</application> makes use of git submodules, you
+          will need to initialize and update the submodules using the following command
+          from within the <application>MailKit</application> directory:
+        </para>
+        <para>
+          <command>git submodule update --init --recursive</command>
+        </para>
+        <para>
+          In the top-level <application>MailKit</application> source directory, there
+          are several solution files:
+        </para>
+        <list class="bullet">
+          <listItem>
+            <para>
+              <application>MailKit.sln</application> includes projects for .NET 4.0,
+              .NET 4.5, Xamarin.Android, Xamarin.iOS, and the unit tests.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <application>MailKit.Mobile.sln</application> just includes the
+              Xamarin.Android and Xamarin.iOS projects.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <application>MailKit.Net45.sln</application> includes the .NET 4.5
+              project as well as the unit tests.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              <application>MailKit.Net40.sln</application> just includes the
+              .NET 4.0 project.
+            </para>
+          </listItem>
+        </list>
+        <para>
+          If you don't have the Xamarin products, you'll probably want to open the
+          <application>MailKit.Net45.sln</application> instead of
+          <application>MailKit.sln</application>.
+        </para>
+        <para>
+          Once you've opened the appropriate <application>MailKit</application> solution
+          file in either <application>Xamarin Studio</application> or
+          <application>Visual Studio</application> (either will work), you can
+          choose the <application>Debug</application> or <application>Release</application>
+	  build configuration and then build.
+        </para>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="Creating-Messages"/>
+      <link xlink:href="Parsing-Messages"/>
+      <link xlink:href="Working-With-Messages"/>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

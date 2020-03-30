@@ -1,0 +1,67 @@
+table {
+	border-spacing: 1px 1px;
+	border-collapse: separate;
+}
+.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	width: 100%;
+	text-align: left;
+}
+table.tablesorter tr th, table.tablesorter tfoot tr th, .inputTable th {
+	background-color: #e6EEEE;
+	border: 1px solid #FFF;
+	padding: $tablePadding;
+	vertical-align:middle;
+  font-size:$tableFontSize;
+}
+table.tablesorter thead tr .header {
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter thead tr .header:after {
+  content: "\f0dc"; 
+  font-family: FontAwesome;
+  float:right;
+}
+table.tablesorter tbody td, .inputTable td {
+	color: #3D3D3D;
+	padding: $tablePadding;
+	background-color: #FFF;
+	vertical-align: top;
+  font-size:$tableFontSize;
+}
+.inputTable td, .inputTable input{
+  margin:0;
+  padding:0;
+}
+table.tablesorter tbody tr.odd td {
+	background-color:#F0F0F6;
+}
+
+table.tablesorter thead tr .headerSortUp:after {
+  content: "\f0d7"; 
+  font-family: FontAwesome;
+  float:right;
+}
+table.tablesorter thead tr .headerSortDown:after {
+  content: "\f0d8"; 
+  font-family: FontAwesome;
+  float:right;
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+background-color: #8dbdd8;
+}
+.tablesorter .collapse{
+  padding:0;
+  width:0;
+  vertical-align: middle;
+}
+.tablesorter a, .tablesorter .fa{
+  color:#000;
+  text-decoration: none;
+  margin:0;
+  
+}

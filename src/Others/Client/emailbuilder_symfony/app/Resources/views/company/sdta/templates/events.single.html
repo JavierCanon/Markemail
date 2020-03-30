@@ -1,0 +1,51 @@
+<table cellspacing="0" cellpadding="0" border="0" class="event draggable">
+  <tbody>
+    <tr>
+      <td width="60" align="center" valign="top"><i class="fa fa-link link left fa-1x" aria-hidden="true"></i>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr>
+              <td width="60" bgcolor="#ee7421" align="center" style="font-size: 15px; letter-spacing: 0.5px; line-height: 20px; color: #ffffff; padding: 10px 0px; width: 60px;"><div class="eventDatepicker fa fa-calendar"></div>
+                <div class="eventDatepickerRange fa fa-calendar-minus-o"></div>
+                <font style="font-family: 'Arial Narrow', Helvetica, sans-serif;"> 
+                
+                <!--[if (!mso 14)&(!mso 15)]><!--> 
+                <font style="font-family: Oswald, 'Arial Narrow', Helvetica, Arial, sans-serif;"> 
+                <!--<![endif]--> 
+                
+                <span class="date editable textarea"> {% if row is defined %} 
+                {{ row.month|upper }} <br>
+                {{ row.eventdate|upper }}
+                {% else %} 
+                JUN <br>
+                10-12
+                {% endif %} </span> 
+                <!--[if (!mso 14)&(!mso 15)]><!--> 
+                </font> 
+                <!--<![endif]--></font></td>
+            </tr>
+          </tbody>
+        </table></td>
+      <td style="padding-left: 15px; padding-right: 7px;"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+            <tr>
+              <td align="left" class="title"><a style="font-size: 16px; letter-spacing: 0.3px; line-height: 22px; color: #434448; text-decoration: none;" href="{% if row is defined %}{{ row.url }}{% endif %}"> <font style="font-family: 'Arial Narrow', Helvetica, sans-serif;"> 
+                <!--[if (!mso 14)&(!mso 15)]><!--> 
+                <font style="font-family: Oswald, 'Arial Narrow', Helvetica, Arial, sans-serif;"> 
+                <!--<![endif]--> 
+                <span class="editable textarea eventname"> 
+                  {% if row is defined %}
+                  {{ row.title|upper }}
+                  {% else %}
+                  EVENT TITLE
+                  {% endif %} 
+                </span>
+                <!--[if (!mso 14)&(!mso 15)]><!--> 
+                </font> 
+                <!--<![endif]--></font> </a></td>
+            </tr>
+          </tbody>
+        </table></td>
+    </tr>
+  </tbody>
+</table>

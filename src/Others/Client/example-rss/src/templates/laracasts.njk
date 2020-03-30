@@ -1,0 +1,71 @@
+---
+title: "The Laracasts Feed"
+preheader: "👀 Check out what's new in this week's edition of the Laracasts Feed"
+---
+
+{% extends "src/layouts/default.njk" %}
+{% set feed = page.build.feed.content %}
+
+{% block template %}
+
+<table class="w-full font-sans">
+  <tr>
+    <td align="center" class="bg-gray-200 sm:px-16">
+      <table class="w-600 sm:w-full">
+        <tr>
+          <td class="p-48 sm:py-32 sm:px-24 text-center">
+            <a href="https://laracasts.com" target="_blank" rel="noopener noreferrer">
+              <img src="https://res.cloudinary.com/maizzle/image/upload/v1583235575/guides/rss/laracasts-logo.png" width="157" alt="{{ feed.title }}">
+            </a>
+            <p class="m-0 mt-8 text-sm fonts-medium text-gray-600">{{ feed.subtitle }}</p>
+          </td>
+        </tr>
+        <tr>
+          <td class="w-full px-24 sm:px-0 text-left">
+            <table class="w-full">
+              <tr>
+                <td class="w-full sm:w-full sm:inline-block">
+                  <table class="w-full">
+                    {% for post in feed.posts %}
+                    <tr>
+                      <td class="p-24 bg-white hover:shadow-xl rounded transition-shadow duration-300">
+                        <p class="m-0 mb-4 text-sm text-gray-500">{{ page.formattedDate(post.pubDate) }}</p>
+                        <h2 class="m-0 mb-16 text-2xl leading-24">
+                          <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer" class="text-gray-800 hover:text-gray-700 no-underline transition-colors duration-300">{{ post.title }}</a>
+                        </h2>
+                        <p class="m-0 text-base text-gray-600">{{ post.summary | truncate(60) }}</p>
+                      </td>
+                    </tr>
+                    {% if loop.last === false %}
+                    <tr>
+                      <td class="h-24"></td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="h-48"></td>
+        </tr>
+        <tr>
+          <td class="px-48 sm:px-24 py-16 bg-gray-300 rounded text-left">
+            <p class="m-0 text-sm text-gray-600">
+              You are receiving this email because you signed up for updates about the {{ feed.title }} feed.
+              You can <a href="https://laracasts.com" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-400 no-underline">unsubscribe</a> at any time.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td class="h-48"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+{% endblock %}
+

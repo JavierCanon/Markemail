@@ -1,0 +1,67 @@
+
+/* --------------------------------------------
+Grid stuff - Changes here will require to update Outlook conditionals
+-------------------------------------------- */
+$half-width-column: $email-width / 2;
+$third-width-column: $email-width / 3;
+$quarter-width-column: $email-width / 4; 
+
+.columns{
+  text-align: center;
+  font-size: 0;
+}
+/* -------------------------------------------
+Two Column
+-------------------------------------------- */
+.two-column {
+  @extend .columns;
+  img {
+    width: 100%;
+    max-width: $half-width-column - ($padding * 2);
+    height: auto;
+  }
+  .column {
+    width: 100%;
+    max-width: $half-width-column;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+/* -------------------------------------------
+Three Column
+-------------------------------------------- */
+.three-column {
+  @extend .columns;
+  padding-top: $padding;
+  padding-bottom: $padding;
+  .column {
+    width: 100%;
+    max-width: $third-width-column;
+    display: inline-block;
+    vertical-align: top;
+  }
+  img {
+    width: 100%;
+    max-width: $third-width-column - ($padding * 2);
+    height: auto;
+  }
+}
+/* -------------------------------------------
+Four Column
+-------------------------------------------- */
+.four-column {
+  @extend .columns;
+  padding-top: $padding;
+  padding-bottom: $padding;
+  .column {
+    width: 100%;
+    max-width: $quarter-width-column;
+    display: inline-block;
+    vertical-align: top;
+  }
+  img {
+    width: 100%;
+    max-width: $quarter-width-column - ($padding * 2);
+    height: auto;
+  }
+}

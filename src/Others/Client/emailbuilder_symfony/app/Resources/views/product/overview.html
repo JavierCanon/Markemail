@@ -1,0 +1,31 @@
+
+{% extends 'base.html.twig' %}
+   
+   {% block body %}
+    <h1>Products Overview</h1>
+    <form action="{{ path('product_add') }}" method="POST">
+    <label for="name">Name : </label>
+    <input type="text" name="name"><br>
+
+      <label for="sku">SKU : </label>
+      <input type="text" name="sku"><br>
+
+      <label for="price" > Price : </label>
+      <input type="text" name="price"><br>
+
+   <input type="submit" name="btnAdd" value="Add Product">
+    
+    </form>
+    
+    {% if products|length == 0%}
+      <h3>No products found.</h3>
+    {% endif %}
+      <ul>
+        {% for product in products %}
+          <li> {{ product.name }} : {{ product.price }} $</li>
+        {% endfor %}
+      </ul>
+      
+      
+{% endblock %}      
+

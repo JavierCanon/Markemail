@@ -1,0 +1,9 @@
+<h2 class="page-title post-title" title="Prewritten email template for {{ page.title }}">
+  <span class="page-title__text post-title__text">{{ page.title }}</span>
+  {% if page.subtitle %}
+  <span class="page-title__subtitle post-title__subtitle">{{ page.subtitle }}</span>
+  {% endif %}
+</h2>
+<div class="send-links">
+  <a href="mailto:?subject={{ page.title }}&body={{ page.content | strip_html | uri_escape }}" title="Send Now" ><i class="fa fa-paper-plane fa-3x"></i></a>
+</div>

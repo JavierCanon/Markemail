@@ -1,0 +1,18 @@
+/* -------------------------------------------
+        Mixins
+-------------------------------------------- */
+@mixin button-generator($font-size,$color,$boder-radius,$bg-color, $size){ 
+  font-size: $font-size;
+  font-family: Helvetica, Arial, sans-serif;
+  color:$color;
+  text-decoration: none;
+  border-radius: $boder-radius;
+  -webkit-border-radius: $boder-radius;
+  -moz-border-radius: $boder-radius;
+  background-color: $bg-color;
+  border-top: ($size - $size / 3) solid $bg-color;
+  border-bottom: ($size - $size / 3) solid $bg-color;
+  border-right: $size solid $bg-color;
+  border-left: $size  solid $bg-color;
+  display: inline-block;
+}

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>2.0.2</Version>
+    <Authors>Lvcc</Authors>
+    <Company />
+    <Description>MailKit extension for asp.net core. Easy send email in asp.net core project.</Description>
+    <Copyright>Copyright 2017 (c) Lvcc. All rights reserved</Copyright>
+    <PackageProjectUrl>https://github.com/myloveCc/NETCore.MailKit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/myloveCc/NETCore.MailKit</RepositoryUrl>
+    <PackageTags>MailKit ASP.NETCore</PackageTags>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>2.0.2.0</AssemblyVersion>
+    <FileVersion>2.0.2.0</FileVersion>
+    <PackageReleaseNotes>1:Update Mailkit to version 2.0.1.
+2:Fix Issues #9 about "no authentication error"</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\Internal\" />
+  </ItemGroup>
+
+</Project>

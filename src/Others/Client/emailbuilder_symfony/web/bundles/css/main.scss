@@ -1,0 +1,532 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+$height100: 100%;
+$footerHeight:100px;
+$bodyFont: 'Roboto', sans-serif;
+$bold: 700;
+$normal: 400;
+$rowPadding: 1px 20px 10px 20px;
+$tablePadding: 7px;
+$tableFontSize: 85%;
+$baseFont: 1em;
+$lightBlue: #0fa0ce;
+$veryLightBlue: #a1e8ff;
+
+html {
+	font-family: $bodyFont;
+  font-size:16px;
+	color: rgba(0,0,0,.87);
+  height:$height100;
+  background:#172933 url(http://www.riptide7.com/themes/riptide7/images/horz_tile.gif) repeat-x center 0;
+}
+body{/* setting this here will set it for my headers, and I can override with the P tag*/
+	font-family:$bodyFont;
+  font-size:$baseFont;
+	line-height: 1.1;
+  height:$height100;
+  width:100%;
+  margin:0 auto;
+  padding:0;
+}
+.nav_menu{
+	float:right;
+	padding:20px;
+}
+.nav_menu a{
+	color:#fff;
+	margin-left:25px;
+	text-decoration:none;
+}
+.page-wrap{
+  min-height: $height100;
+  /*equal to footer height */
+  margin-bottom: -$footerHeight;
+}
+.page-wrap:after{
+  content: "";
+  display:block;
+  height:$footerHeight;
+}
+footer{
+  height:$footerHeight;
+
+  width: 100%;
+  background: #333;
+  padding-top: 30px;
+  letter-spacing: .2px;
+  margin-top: 30px;
+  border-top: 1px solid #555;
+
+
+
+}
+footer .row{
+  background:transparent;
+}
+
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+	font-weight: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-weight:$normal;
+  margin:15px 0 5px;
+}
+h1 {
+  font-size: $baseFont*2.85;
+}
+h2 {
+  font-size: $baseFont*2.25;
+}
+h3 {
+  font-size: $baseFont*1.5;
+}
+h4 {
+  font-size: $baseFont;
+}
+h5 {
+  font-size: $baseFont*.83;
+}
+h6 {
+  font-size: $baseFont*.75;
+}
+p {
+  margin: auto auto 1.5rem;
+}
+p + p {
+  text-indent: 1.5rem;
+  margin-top: -1.5rem;
+}
+em {
+	font-style: italic;
+}
+small,
+.small {
+	font-size: 75%;
+}
+
+
+
+#loadContent, #loadContent textarea{
+	height: 98%;
+}
+
+
+
+.email_layout {
+	width: 603px;
+	margin: 0 auto;
+	border: 1px solid #333;
+}
+.rowlabel{
+    width:2%;
+}
+.title{
+  width:20%
+}
+.date,
+.month {
+	width: 5%;
+}
+.url {
+	width: 45%;
+}
+.content {
+	width: 20%;
+}
+
+
+.break {
+	clear: both;
+	width: 100%;
+	height: 30px;
+}
+.pad20 {
+	padding: 20px;
+}
+
+
+.block {
+	position: relative;
+}
+
+
+
+
+
+.linking {
+	background: red;
+}
+.linked_url {
+	background: green;
+  position:absolute;
+  right:-130px;
+  top:0;
+  width:100px;
+  text-align: center;
+  color:#fff;
+  padding:10px;
+
+}
+
+.filled p {
+	margin: 0;
+}
+.filled table {
+	border-collapse: collapse;
+}
+.padtop20 {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.ui-sortable-helper {
+	border: 2px solid red;
+	background: red;
+}
+.raw {
+	box-sizing: border-box;
+	width: 100%;
+	height: 180px;
+	padding: 3px 10px 0;
+	border-bottom: 1px solid #000;
+	background: #ddd;
+}
+.container,
+.raw {
+	position: relative;
+}
+.container {
+	width: 600px;
+	margin: 0 auto;
+	background: #fff;
+}
+
+
+.container p {
+	margin: 0;
+}
+#texteditor_wrapper {
+	position: fixed;
+	left: 2%;
+	width: 80%;
+	background: #fff;
+}
+
+.clearfix:after,
+.col:after,
+.item-list ul:after,
+.row:after {
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0;
+	content: '.';
+}
+.contentarea_container table {
+	border-spacing: 0 0;
+}
+.column img {
+	width: 100%;
+}
+.required {
+
+
+}
+.required:after{
+  content:" *";
+  color:red;
+  font-weight:$bold;
+}
+
+/**
+  Grid Styles
+*/
+
+.first-row {
+	border-radius: 10px 10px 0 0;
+}
+.row {
+	background: #fff;
+  padding:$rowPadding;
+}
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+
+}
+
+@media only screen and (min-width:1000px) {
+  header img{
+    padding:20px 0;
+  }
+  .row, header {
+    width: 960px;
+    margin: 0 auto;
+  }
+  .row .row {
+    clear: both;
+    padding: 0;
+  }
+  .ui-dialog .row {
+    width: 90%;
+  }
+.cols_12-1,
+.cols_12-2,
+.cols_12-3,
+.cols_12-4,
+.cols_12-5,
+.cols_12-6,
+.cols_12-7,
+.cols_12-8,
+.cols_12-9,
+.cols_12-10,
+.cols_12-11,
+.cols_12-12.one_third,
+.cols_24-1,
+.cols_24-2,
+.cols_24-3,
+.cols_24-4,
+.cols_24-5,
+.cols_24-6,
+.cols_24-7,
+.cols_24-8,
+.cols_24-9,
+.cols_24-10,
+.cols_24-11,
+.cols_24-12,
+.cols_24-13,
+.cols_24-14,
+.cols_24-15,
+.cols_24-16,
+.cols_24-17,
+.cols_24-18,
+.cols_24-19,
+.cols_24-20,
+.cols_24-21,
+.cols_24-22,
+.cols_24-23,
+.cols_24-24,
+.half,
+.two_third {
+	float: left;
+	overflow: hidden;
+	width: 9.334%;
+	margin: 0 0 0 2%;
+}
+.cols_24-1 {
+
+	width: 3.25%;
+}
+.cols_12-1,
+.cols_24-2 {
+	width: 6.5%;
+}
+.cols_24-3 {
+	width: 10.75%;
+}
+.cols_12-2,
+.cols_24-4 {
+	width: 15%;
+}
+.cols_24-5 {
+	width: 19.25%;
+}
+.cols_12-3,
+.cols_24-6 {
+	width: 23.5%;
+}
+.cols_24-7 {
+	width: 27.75%;
+}
+.cols_12-4,
+.cols_24-8 {
+	width: 32%;
+}
+.cols_24-9 {
+	width: 36.25%;
+}
+.cols_12-5,
+.cols_24-10 {
+	width: 40.5%;
+}
+.cols_24-11 {
+	width: 44.75%;
+}
+.cols_12-6,
+.cols_24-12 {
+	width: 49%;
+}
+.cols_24-13 {
+	width: 53.25%;
+}
+.cols_12-7,
+.cols_24-14 {
+	width: 57.5%;
+}
+.cols_24-15 {
+	width: 61.75%;
+}
+.cols_12-8,
+.cols_24-16 {
+	width: 66%;
+}
+.cols_24-17 {
+	width: 70.25%;
+}
+.cols_12-9,
+.cols_24-18 {
+	width: 74.5%;
+}
+.cols_24-19 {
+	width: 78.75%;
+}
+.cols_12-10,
+.cols_24-20 {
+	width: 83%;
+}
+.cols_24-21 {
+	width: 87.25%;
+}
+.cols_12-11,
+.cols_24-22 {
+	width: 91.5%;
+}
+.cols_24-23 {
+	width: 95.75%;
+}
+.cols_12-12,
+.cols_24-24 {
+	width: 100%;
+}
+.first-col {
+	margin-left: 0;
+}
+}
+
+@media only screen and (min-width:1200px) {
+  .row, header {
+    width: 1160px;
+  }
+  .ui-dialog .row {
+    width: 90%;
+  }
+
+}
+
+
+
+.editing {
+	width: 100%;
+	/* color: #000; */
+	/* position:absolute; */
+	/* top:-10px; */
+	/* left:-10px; */
+	/* border:10px solid black; */
+
+	z-index: 1000;
+}
+.drop-area {
+	box-sizing: border-box;
+}
+.hidden {
+	display: none;
+}
+
+.unedited {
+	color: #f00;
+}
+span.empty {
+  display: block;
+  text-align:center;
+  padding:50px;
+	background:transparent;
+
+
+}
+.fullhtml{
+	display:block;
+}
+.email_show_container{
+  border:1px solid black;box-sizing:border-box;
+
+}
+.email_show_container .module_controls{
+  display:none;
+}
+.saved{
+  position:fixed;
+  top:80px;
+  padding:20px;
+  left:0;
+  right:0;
+  text-align:center;
+  color:red;
+  font-weight:$bold;
+  display:none;
+  z-index: 1000;
+}
+.dropzone {
+  height: 0px;
+  position: relative;
+}
+.dropzone--target{
+  background: #b0ffb8;/*cfffd4;*/
+  height:20px;
+  top:-10px;
+  position:absolute;
+  width:100%;
+}
+
+.dropzone.activated {
+  height: 40px;
+}
+.activated {
+	border: 1px dotted red;
+	background:#b0ffb8;
+}
+/*SDTA SPECIFIC*/
+.blockme {
+	position: relative;
+}
+#addSignature {
+	position: absolute;
+	top: 50px;
+	left: -100px;
+	width: 200px;
+}
+#addSignature span {
+	display: block;
+	float: left;
+	margin: 0 20px 0 0;
+}
+.project_options{
+  position:fixed;
+  padding:10px 0px;
+  background:#777;
+  transition: 1s;
+  border-right:1px solid #333;
+  border-bottom:1px solid #ddd;
+  border-top:1px solid #ddd;
+}
+.project_options:hover{
+  padding-left:20px;
+  transition: .5s;
+}
+.project_options .fa{
+  display:block;
+  padding:10px;
+  margin:0;
+}
+.fontSize.display{
+  position:absolute;
+  top:100px;
+  left:-50px;
+  font-size:20px;
+}

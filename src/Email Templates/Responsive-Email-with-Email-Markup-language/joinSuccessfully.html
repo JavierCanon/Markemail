@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-tw" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0;">
+ 	<meta name="format-detection" content="telephone=no"/>
+
+	<style>
+		/* Reset styles */ 
+		body { margin: 0; padding: 0; min-width: 100%; width: 100% !important; height: 100% !important;}
+		body, table, td, div, p, a { -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%; }
+		table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse !important; border-spacing: 0; }
+		img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+		#outlook a { padding: 0; }
+		.ReadMsgBody { width: 100%; } .ExternalClass { width: 100%; }
+		.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div { line-height: 100%; }
+
+		/* Rounded corners for advanced mail clients only */ 
+		@media all and (min-width: 560px) {
+			.container { border-radius: 8px; -webkit-border-radius: 8px; -moz-border-radius: 8px; -khtml-border-radius: 8px;}
+		}
+
+		/* Set color for auto links (addresses, dates, etc.) */ 
+		a, a:hover {
+			color: #127DB3;
+		}
+		.footer a, .footer a:hover {
+			color: #999999;
+		}
+ 	</style>
+
+	<!-- MESSAGE SUBJECT -->
+	<title>揪團通知：你已成功加入{{groupName}}囉！</title>
+
+</head>
+
+<!-- BODY -->
+<!-- Set message background color (twice) and text color (twice) -->
+<body topmargin="0" rightmargin="0" bottommargin="0" leftmargin="0" marginwidth="0" marginheight="0" width="100%" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%; height: 100%; -webkit-font-smoothing: antialiased; text-size-adjust: 100%; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; line-height: 100%;
+	background-color: #fff;
+	color: #000000;"
+	bgcolor="#fff"
+	text="#353e3e">
+
+	<!-- SCHEMA -->
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org",
+			"@type": "Order",
+			"merchant": {
+				"@type": "Organization",
+				"name": "{{companyName}}"
+		},
+			"orderNumber": "{{orderNumber}}",
+			"priceCurrency": "TWD",
+			"price": "尚未確認",
+			"acceptedOffer": 
+			[
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Product",
+						"name": "{{product}}",
+						"sku": "{{productSku}}",
+						"url": "{{productPath}}",
+						"image": "{{productImage}}"
+					},
+					"price": "{{productPrice}}",
+					"priceCurrency": "TWD",
+					"eligibleQuantity": {
+						"@type": "QuantitativeValue",
+						"value": "{{productQuantity}}"
+					}
+				},
+				{
+					"@type": "Offer",
+					"itemOffered": {
+						"@type": "Product",
+						"name": "{{product}}",
+						"sku": "{{productSku}}",
+						"url": "{{productPath}}",
+						"image": "{{productImage}}"
+					},
+					"price": "{{productPrice}}",
+					"priceCurrency": "TWD",
+					"eligibleQuantity": {
+						"@type": "QuantitativeValue",
+						"value": "{{productQuantity}}"
+					}
+				}
+			]
+		}
+	</script>
+
+	<!-- SECTION / BACKGROUND -->
+	<!-- Set message background color one again -->
+	<table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;" class="background"><tr><td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;"
+	bgcolor="#fff">
+
+	<!-- WRAPPER -->
+	<!-- Set wrapper width (twice) -->
+	<table border="0" cellpadding="0" cellspacing="0" align="center"
+		width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+		max-width: 560px;" class="wrapper">
+
+		<tr>
+			<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%;
+				padding-top: 20px;
+				padding-bottom: 20px;">
+
+				<!-- PREHEADER -->
+				<!-- Set text color to background color -->
+				<div style="display: none; visibility: hidden; overflow: hidden; opacity: 0; font-size: 1px; line-height: 1px; height: 0; max-height: 0; max-width: 0;
+				color: #F0F0F0;" class="preheader">
+					Hi {{name}}你已成功加入由{{groupLeader}}開團的{{groupName}}。提醒你！目前系統尚未扣款，將於 {{endDateTime}} 時計算揪團總件數、套用正確優惠後再向你索款，您可透過下方按鈕查看揪團目前的現金回饋比例。別忘了分享給更多人，越多人加入優惠越多噢！
+				</div>
+
+				<!-- LOGO -->
+				<!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2. URL format: http://domain.com/?utm_source={{Campaign-Source}}&utm_medium=email&utm_content=logo&utm_campaign={{Campaign-Name}} -->
+				<a target="_blank" style="text-decoration: none;"
+					href="{{OfficialWebsitePath}}"><img border="0" vspace="0" hspace="0"
+					src="images/[change-logo-black.png"
+					width="100" height="30"
+					alt="Logo" title="Logo" style="
+					color: #353e3e;
+					font-size: 10px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;" />
+				</a>
+			</td>
+		</tr>
+	<!-- End of WRAPPER -->
+	</table>
+
+	<!-- WRAPPER / CONTEINER -->
+	<!-- Set conteiner background color -->
+	<table border="0" cellpadding="0" cellspacing="0" align="center"
+		bgcolor="#FFFFFF"
+		width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+		max-width: 560px;" class="container">
+
+		<!-- HERO IMAGE -->
+		<!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 (wrapper x2). Do not set height for flexible images (including "auto"). URL format: http://domain.com/?utm_source={{Campaign-Source}}&utm_medium=email&utm_content={{Ìmage-Name}}&utm_campaign={{Campaign-Name}} -->
+		<tr>
+			<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;padding-left: 4%; padding-right: 4%;
+				padding-top: 20px;" class="hero"><a target="_blank" style="text-decoration: none;"
+				href="{{groupPath}}"><img border="0" vspace="0" hspace="0"
+				src="images/[change-cover.jpg"
+				alt="Please enable images to view this content" title="Hero Image"
+				width="560" style="
+				width: 100%;
+				max-width: 560px;
+				color: #353e3e; font-size: 13px; margin: 0; padding: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;"/></a>
+			</td>
+		</tr>
+
+		<!-- PARAGRAPH -->
+		<!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+		<tr>
+			<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 87.5%; font-size: 16px; font-weight: 400; line-height: 160%;
+				padding-top: 25px; 
+				color: #353e3e;
+				font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif" class="paragraph">
+				<b>Hi {{name}}</b>
+			</td>
+		</tr>
+
+		<!-- PARAGRAPH -->
+		<tr>
+			<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;padding-left: 4%; padding-right: 4%; width: 87.5%; font-size: 16px; font-weight: 400; line-height: 160%;
+				padding-top: 25px; 
+				color: #353e3e;
+				font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="paragraph">
+				你已成功加入由{{groupLeader}}開團的{{groupName}}。提醒你！<span style="color:#00b5ad;">目前系統尚未扣款</span>，將於 {{endDateTime}} 時計算揪團總件數並套用正確優惠後，再向你索款。<p style="line-height: 160%">你可透過下方按鈕查看揪團目前優惠進度。別忘了分享給更多人，越多人加入，你所享有的優惠越多噢！</p>
+			</td>
+		</tr>
+
+		<!-- BUTTON -->
+		<!-- Set button background color at TD, link/text color at A and TD, font family ("sans-serif" or "Georgia, serif") at TD. For verification codes add "letter-spacing: 5px;". Link format: http://domain.com/?utm_source={{Campaign-Source}}&utm_medium=email&utm_content={{Button-Name}}&utm_campaign={{Campaign-Name}} -->
+		<tr>
+			<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 87.5%;
+				padding-top: 25px; padding-bottom: 5px;" class="button">
+				<a href="{{groupPath}}" target="_blank" style="text-decoration: none;">
+					<table border="0" cellpadding="0" cellspacing="0" align="center" style="max-width: 240px; min-width: 120px; border-collapse: collapse; border-spacing: 0; padding: 0;"><tr><td align="center" valign="middle" style="text-decoration: none; padding: 12px 24px; margin: 0; border-collapse: collapse; border-spacing: 0; border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px; -khtml-border-radius: 3px;"
+						bgcolor="#00b5ad"><a target="_blank" style="text-decoration: none; color: #FFFFFF; font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif; font-size: 17px; font-weight: 400; line-height: 120%;"
+						href="{{groupPath}}">
+							查看優惠進度
+				</a>
+				</td></tr></table></a>
+			</td>
+		</tr>
+
+		<!-- ORDER NUMBER -->
+		<tr>
+				<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%; padding-top: 40px;">
+					<table align="left" style="border-collapse: collapse; border-spacing: 0; margin: 0; background: #F0F0F0; padding-top: 20px; padding-bottom:25px; padding-left: 4%; padding-right: 4% ; width: 92%; display: block; font-size: 16px; color: #353e3e;">
+						<tr>
+							<td style="line-height: 150%; font-family:-apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;">團員編號：{{orderNumber}}</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		<!-- LIST NAME -->
+		<tr>
+				<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; padding-bottom: 3px; width: 87.5%; font-size: 16px; font-weight: 400; line-height: 150%;
+				padding-top: 25px;
+				color: #353e3e;
+				font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="subheader">
+				<b>團員明細</b>
+				</td>
+		</tr>
+
+		<!-- BULLET LIST -->
+		<tr>
+			<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; padding-bottom: 3px; width: 87.5%; font-size: 16px; font-weight: 400; line-height: 150%;
+			padding-top: 25px;
+			color: #353e3e;
+			font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;">
+				<table>
+					<tr>
+						<td>姓名</td>
+						<td style="padding-left: 8px;font-size: 16px; font-weight: 400; line-height: 160%;">{{name}}</td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td style="padding-left: 8px;font-size: 16px; font-weight: 400; line-height: 160%;">{{email}}</td>
+					</tr>
+					<tr>
+						<td>電話</td>
+						<td style="padding-left: 8px;font-size: 16px; font-weight: 400; line-height: 160%;">{{phone}}</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<!-- LINE -->
+		<!-- Set line color -->
+		<tr>	
+				<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;padding-left: 4%; padding-right: 4%; width: 92%;
+					padding-top: 25px;" class="line"><hr
+					color="#E0E0E0" align="center" width="100%" size="1" noshade style="margin: 0; padding: 0;"/>
+				</td>
+		</tr>
+
+		<!-- LIST NAME -->
+		<tr>
+				<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; padding-bottom: 3px; width: 87.5%; font-size: 16px; font-weight: 400; line-height: 150%;
+				padding-top: 25px;
+				color: #353e3e;
+				font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="subheader">
+				<b>商品明細</b>
+				</td>
+		</tr>
+
+		<!-- PRODUCT LIST -->
+		<tr>
+			<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;padding-left: 4%; padding-right: 4%;" class="list-item">
+				<table align="center" border="0" cellspacing="0" cellpadding="0" style="width: inherit; margin: 0; padding: 0; border-collapse: collapse; border-spacing: 0;">
+				
+				<!-- LIST ITEM -->
+				<tr>
+
+					<!-- LIST ITEM IMAGE -->
+					<!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 -->
+					<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0;
+						padding-top: 30px;
+						padding-right: 20px;"><img
+					border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;
+						color: #353e3e;"
+						src="images/[change-list-item.png"
+						alt="product" title="Highly compatible"
+						width="50" height="50"></td>
+
+					<!-- LIST ITEM TEXT -->
+					<!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+					<td align="left" valign="top" style="font-size: 16px; font-weight: 400; line-height: 160%; border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+						padding-top: 25px;
+						color: #353e3e;
+						font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="paragraph">
+							<b>{{product}}</b><br/>
+							{{productSku}} x {{productQuantity}}<br/>
+							$100
+					</td>
+
+				</tr>
+
+				<!-- LIST ITEM -->
+				<tr>
+
+					<!-- LIST ITEM IMAGE -->
+					<!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 -->
+					<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0;
+						padding-top: 30px;
+						padding-right: 20px;"><img
+					border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: block;
+						color: #353e3e;"
+						src="images/[change-list-item.png"
+						alt="product" title="Highly compatible"
+						width="50" height="50"></td>
+
+					<!-- LIST ITEM TEXT -->
+					<!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+					<td align="left" valign="top" style="font-size: 16px; font-weight: 400; line-height: 160%; border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;
+						padding-top: 25px;
+						color: #353e3e;
+						font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="paragraph">
+							<b>{{product}}</b><br/>
+							{{productSku}} x {{productQuantity}}<br/>
+							$100
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+
+		<!-- CALCULATOR -->
+		<tr>
+			<td align="left" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%; padding-top: 20px; padding-bottom:25px;">
+				<table align="left" style="border-collapse: collapse; border-spacing: 0; margin: 0; background: #F0F0F0; padding-top: 20px; padding-bottom:25px; padding-left: 4%; padding-right: 4% ; width: 92%; display: block; font-size: 16px; color: #353e3e;">
+					<tr>
+						<td style="line-height: 150%; font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;">
+							小計：$200
+						</td>
+					</tr>
+					<tr>
+						<td style="line-height: 150%; font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;">
+							目前優惠：10%	
+						</td>
+					</tr>
+					<tr>
+						<td style="line-height: 150%; font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;">
+							運費：$0
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+
+		<!-- LINE -->
+		<!-- Set line color -->
+		<tr>
+				<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%;
+					padding-top: 25px; padding-bottom: 25px" class="line"><hr
+					color="#E0E0E0" align="center" width="100%" size="1" noshade style="margin: 0; padding: 0;" />
+				</td>
+			</tr>
+
+	<!-- End of WRAPPER -->
+	</table>
+
+	<!-- WRAPPER -->
+	<!-- Set wrapper width (twice) -->
+	<table border="0" cellpadding="0" cellspacing="0" align="center"
+		width="560" style="border-collapse: collapse; border-spacing: 0; padding: 0; width: inherit;
+		max-width: 560px;" class="wrapper">
+
+		<tr>
+			<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%; padding-bottom: 20px; font-size: 14px; line-height: 160%; color:#353e3e;font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;">
+			距離 30% 優惠還差 50 件<br>
+			快點邀請更多人加入，讓所有人可以享更多優惠</td>
+		</tr>
+
+		<!-- SOCIAL NETWORKS -->
+		<!-- Image text color should be opposite to background color. Set your url, image src, alt and title. Alt text should fit the image size. Real image size should be x2 -->
+		<tr>
+			<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%;
+				padding-top: 2px;" class="social-icons"><table
+				width="256" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse: collapse; border-spacing: 0; padding: 0;">
+				<tr>
+					<!-- ICON 1 -->
+					<td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+						href="https://www.facebook.com/sharer/sharer.php?u={{sharePath}}" target="_blank"
+					style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+						color: #000000;"
+						alt="F" title="Facebook"
+						width="44" height="44"
+						src="images/social-icons/facebook.png"></a></td>
+
+					<!-- ICON 2 -->
+					<td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+						href="https://www.twitter.com/share?url={{sharePath}}" target="_blank"
+					style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+						color: #000000;"
+						alt="T" title="Twitter"
+						width="44" height="44"
+						src="images/social-icons/twitter.png"></a></td>				
+
+					<!-- ICON 3 -->
+					<td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+						href="https://lineit.line.me/share/ui?url={{sharePath}}" target="_blank"
+					style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+						color: #000000;"
+						alt="G" title="LINE"
+						width="44" height="44"
+						src="images/social-icons/line.png"></a></td>		
+
+					<!-- ICON 4 -->
+					<td align="center" valign="middle" style="margin: 0; padding: 0; padding-left: 10px; padding-right: 10px; border-collapse: collapse; border-spacing: 0;"><a target="_blank"
+						href="mailto:support@yosgo.com?subject=邀請你加入揪團&body=邀請你加入{{groupLeader}}的揪團，整團不限商品種類，揪越多就越優惠！一起加入享優惠吧！{{sharePath}}"
+					style="text-decoration: none;"><img border="0" vspace="0" hspace="0" style="padding: 0; margin: 0; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; border: none; display: inline-block;
+						color: #000000;"
+						alt="I" title="Email"
+						width="44" height="44"
+						src="images/social-icons/mail.png"></a></td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+
+		<!-- FOOTER -->
+		<!-- Set text color and font family ("sans-serif" or "Georgia, serif"). Duplicate all text styles in links, including line-height -->
+
+		<tr>
+			<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%; font-size: 12px; font-weight: 400; line-height: 160%;
+			padding-top: 25px;
+			color: #999999;
+			font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="footer"><b>關於付款機制</b>為了讓所有加入的團員享有相同的優惠，系統將在活動結束時統一結算並刷卡</td>
+		</tr>
+
+		<tr>
+				<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%; font-size: 12px; font-weight: 400; line-height: 160%;
+				padding-top: 10px;
+				color: #999999;
+				font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="footer"><b>關於商品疑問</b>有任何疑問歡迎洽詢<a href="{{customerService}}">{{companyName}}</a></td>
+			</tr>
+
+			<tr>
+					<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 4%; padding-right: 4%; width: 92%; font-size: 12px; font-weight: 400; line-height: 160%;
+					padding-top: 10px;
+					padding-bottom: 40px;
+						color: #999999;
+						font-family: -apple-system, system-ui, PingFang TC, Noto Sans TC, 微軟正黑體, Helvetica, sans-serif;" class="footer">
+							揪團系統由<a href="https://yosgo.com" target="_blank" style="text-decoration: underline; color: #999999; font-family: sans-serif; font-size: 12px; font-weight: 400; line-height: 150%;">揪口</a>提供
+					</td>
+				</tr>
+	<!-- End of WRAPPER -->
+	</table>
+
+	<!-- End of SECTION / BACKGROUND -->
+	</td></tr></table>
+</body>
+</html>

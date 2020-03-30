@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMailBox", "MyMailBox\MyMailBox.csproj", "{EA8BD5C1-7A62-4151-A20F-3F12D00AB07B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA8BD5C1-7A62-4151-A20F-3F12D00AB07B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA8BD5C1-7A62-4151-A20F-3F12D00AB07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA8BD5C1-7A62-4151-A20F-3F12D00AB07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA8BD5C1-7A62-4151-A20F-3F12D00AB07B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27AF01BD-0305-4978-9617-4A96CB0B2B31}
+	EndGlobalSection
+EndGlobal

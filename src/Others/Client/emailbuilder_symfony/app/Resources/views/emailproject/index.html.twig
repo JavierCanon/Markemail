@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+   
+   {% block body %}
+   
+   <div class="row">
+    <h2>Your Projects</h2>
+   </div>
+   <div class="row">
+
+    <div class="first-col cols_12-6">
+   
+	{% if emailprojects %}
+  <form name="form" method="post" action="/emailproject/deletemultiple">
+      <table id="project_list" class="tablesorter">
+        <thead>
+            <tr>
+               
+               
+                <th>Email Project Title</th>
+                <th>Date Modified</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emailproject in emailprojects %}
+            <tr>
+              <td><input type="checkbox" name="delete[]" value="{{ emailproject.id }}" />
+              <a href="{{ path('emailproject_build', { 'id': emailproject.id }) }}">{{ emailproject.title }}</a></td>
+              <td>{{ emailproject.date_modified }}</td>
+              <td class="collapse" valign="middle" align="center"><a href="{{ path('emailproject_show', { 'id': emailproject.id }) }}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+              <td class="collapse" valign="middle" align="center"><a href="{{ path('emailproject_build', { 'id': emailproject.id }) }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+              <td class="collapse" valign="middle" align="center"><a href="{{ path('emailproject_edit', { 'id': emailproject.id }) }}"><i class="fa fa-cog" aria-hidden="true"></i></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  <input type="submit" value="Delete Checked Projects" class="button subtle">
+  </form>
+                
+                
+          
+	{%else%}
+	You have no projects yet.
+{% endif %}
+    
+    
+    </div>
+  <div class="cols_12-6">
+    
+    <form action="{{ path('emailproject_add') }}" method="POST">
+      <input type="submit" name="btnAdd" value="Create New Email Project">
+    </form>
+    
+  </div>
+</div>
+      
+{% endblock %}  

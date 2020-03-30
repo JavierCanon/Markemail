@@ -1,0 +1,7 @@
+{
+"controls": 
+	{
+		"toggle_sponsored": ["fa-usd", "toggle_sponsored"],
+		"remove_headline": ["fa-header", "remove_headline"]
+	}
+}

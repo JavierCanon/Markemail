@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "development": "maizzle build",
+    "production": "maizzle build production",
+    "watch": "maizzle serve"
+  },
+  "dependencies": {
+    "@maizzle/framework": "^0.8.0",
+    "rss-parser": "^3.7.5"
+  },
+  "browserslist": [
+    "> 1%"
+  ]
+}

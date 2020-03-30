@@ -1,0 +1,18 @@
+{
+  "APIKEY": "Add your Mailchimp API Key",
+
+  "testing": {
+    "from": "Email Address to send from",
+    "to": "Who do you want to send to? Comma separated",
+    "subject": "Subject for test email"
+  },
+
+  "auth": {
+    "mailgun": {
+        "user": "SMTP User",
+        "pass": "SMTP Password"
+    }
+  },
+
+  "litmus": "Your Litmus static email address"
+}

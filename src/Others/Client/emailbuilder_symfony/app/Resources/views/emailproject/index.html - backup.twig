@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Emailprojects list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Body</th>
+                <th>Email</th>
+                <th>Exacttarget_id</th>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Source</th>
+                <th>Campaign</th>
+                <th>Medium</th>
+                <th>Term</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emailproject in emailprojects %}
+            <tr>
+                <td><a href="{{ path('emailproject_show', { 'id': emailproject.id }) }}">{{ emailproject.id }}</a></td>
+                <td>{{ emailproject.username }}</td>
+                <td>{{ emailproject.body }}</td>
+                <td>{{ emailproject.email }}</td>
+                <td>{{ emailproject.exacttargetid }}</td>
+                <td>{{ emailproject.title }}</td>
+                <td>{{ emailproject.company }}</td>
+                <td>{{ emailproject.source }}</td>
+                <td>{{ emailproject.campaign }}</td>
+                <td>{{ emailproject.medium }}</td>
+                <td>{{ emailproject.term }}</td>
+                <td>{{ emailproject.content }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('emailproject_show', { 'id': emailproject.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('emailproject_edit', { 'id': emailproject.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('emailproject_new') }}">Create a new emailproject</a>
+        </li>
+    </ul>
+{% endblock %}

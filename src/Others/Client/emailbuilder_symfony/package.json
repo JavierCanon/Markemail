@@ -1,0 +1,24 @@
+{
+  "name": "riptide7-email-builder",
+  "version": "3.1.1",
+  "description": "An internal email building application for the San Diego Tourism Authority",
+  "devDependencies": {
+    "autoprefixer": "^6.4.0",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-js-prettify": "^0.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-uglify": "^2.0.0",
+    "multipipe": "^1.0.2",
+    "postcss": "^5.1.1",
+    "precss": "^1.4.0",
+    "pump": "^1.0.1",
+    "stylelint": "^7.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stan Alachniewicz",
+  "license": "MIT"
+}

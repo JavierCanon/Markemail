@@ -1,0 +1,21 @@
+# Site settings
+title: Canned Emails
+description: >
+  Canned Emails is a minimal site with prewritten emails, useful for people who prefer easy way of doing things.
+
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://canned-emails.lightrains.com" # the base hostname & protocol for your site
+
+cover: /assets/img/canned-emails.png
+lang: en
+
+permalink: /email/:title
+
+author:
+  fullname: Nikhil Mohan
+  github: niksmac/Canned-Emails
+
+google_analytics: 'UA-71104240-1'
+
+# Build settings
+markdown: kramdown

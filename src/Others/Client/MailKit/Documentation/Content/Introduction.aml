@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="Introduction" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>MimeKit and MailKit are popular fully-featured email frameworks for .NET</para>
+    </introduction>
+
+    <section>
+      <title>Feature Overview</title>
+      <content>
+        <list class="bullet">
+          <listItem>
+            <para>Security</para>
+            <list class="bullet">
+              <listItem>
+                <para>SASL Authentication</para>
+                <list class="bullet">
+                  <listItem>
+                    <para>Supports the CRAM-MD5, DIGEST-MD5, LOGIN, NTLM, PLAIN, SCRAM-SHA-1, SCRAM-SHA-256, and XOAUTH2 mechanisms.</para>
+                  </listItem>
+                </list>
+              </listItem>
+              <listItem>
+                <para>Supports S/MIME v3.2.</para>
+              </listItem>
+              <listItem>
+                <para>Supports OpenPGP.</para>
+              </listItem>
+              <listItem>
+                <para>Supports DKIM-Signatures.</para>
+              </listItem>
+	      <listItem>
+		<para>Supports ARC signatures.</para>
+	      </listItem>
+            </list>
+          </listItem>
+          <listItem>
+            <para>SMTP Client</para>
+            <list class="bullet">
+              <listItem>
+                <para>Supports SSL and TLS.</para>
+              </listItem>
+              <listItem>
+                <para>Supports the STARTTLS, SIZE, DSN, 8BITMIME, PIPELINING, BINARYMIME, and SMTPUTF8 extensions.</para>
+              </listItem>
+            </list>
+          </listItem>
+          <listItem>
+            <para>POP3 Client</para>
+            <list class="bullet">
+              <listItem>
+                <para>Supports SSL and TLS.</para>
+              </listItem>
+              <listItem>
+                <para>Supports the STLS, UIDL, PIPELINING, UTF8, and LANG extensions.</para>
+              </listItem>
+            </list>
+          </listItem>
+          <listItem>
+            <para>IMAP Client</para>
+            <list class="bullet">
+              <listItem>
+                <para>Supports SSL and TLS.</para>
+              </listItem>
+              <listItem>
+                <para>Supports the ACL, QUOTA, LITERAL+, IDLE, NAMESPACE, ID, CHILDREN, LOGINDISABLED, STARTTLS,
+                MULTIAPPEND, UNSELECT, UIDPLUS, CONDSTORE, ESEARCH, SASL-ID, COMPRESS, WITHIN, ENABLE, QRESYNC,
+                SORT, THREAD, ANNOTATE, LIST-EXTENDED, ESORT, METADATA, METADATA-SERVER, NOTIFY, FILTERS, LIST-STATUS,
+                SORT=DISPLAY, SPECIAL-USE, CREATE-SPECIAL-USE, SEARCH=FUZZY, MOVE, UTF8=ACCEPT, UTF8=ONLY, LITERAL-,
+                APPENDLIMIT, STATUS=SIZE, OBJECTID, XLIST, and Google Mail (X-GM-EXT-1) extensions.</para>
+              </listItem>
+            </list>
+          </listItem>
+          <listitem>
+            <para>Proxy Support</para>
+            <list class="bullet">
+              <listitem>
+                <para>Supports HTTP, SOCKS4, SOCKS4a, and SOCKS5.</para>
+              </listitem>
+              <listitem>
+                <para>Fully cancellable and asynchronous Connect methods.</para>
+              </listitem>
+            </list>
+          </listitem>
+          <listItem>
+            <para>MIME Parser</para>
+            <list class="bullet">
+              <listItem>
+                <para>Flexible: allows overriding default classes for any MIME-type.</para>
+              </listItem>
+              <listItem>
+                <para>High performance: faster than any other .NET MIME parser on the market. Rivals the performance of even the fastest C++ parsers.</para>
+              </listItem>
+              <listItem>
+                <para>Robust: handles a wide variety of broken MIME formatting with ease.</para>
+              </listItem>
+            </list>
+          </listItem>
+          <listItem>
+            <para>
+              All API's that might block allow cancellation via <codeEntityReference>T:System.Threading.CancellationToken</codeEntityReference>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>All API's that perform I/O have async variants.</para>
+          </listItem>
+          <listItem>
+            <para>Client-side sorting and threading of messages.</para>
+          </listItem>
+          <listItem>
+            <para>Supports .NET 4.5, .NETStandard 1.3, .NETStandard 1.6, .NETStandard 2.0, Xamarin.Android, Xamarin.iOS, Windows Phone 8.1, and more.</para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+
+    <section>
+      <title>History</title>
+      <content>
+        <para>
+          As a developer and user of email clients, I had come to realize that the vast majority of email
+          client (and server) software had less-than-satisfactory MIME implementations. More often than not these
+          email clients created broken MIME messages and/or would incorrectly try to parse a MIME message thus
+          subtracting from the full benefits that MIME was meant to provide. MimeKit is meant to address this
+          issue by following the MIME specification as closely as possible while also providing programmers with
+          an extremely easy to use high-level API.
+        </para>
+        <para>
+          This led me, at first, to implement another MIME parser library called
+          <externalLink>
+            <linkText>GMime</linkText>
+            <linkUri>http://spruce.sourceforge.net/gmime</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>
+          which was implemented in C and later added a C# binding called GMime-Sharp.
+        </para>
+        <para>
+          Now that I typically find myself working in C# rather than lower level languages like C, I decided
+          to begin writing a new parser in C# which would not depend on GMime. This would also allow me to have
+          more flexibility in that I'd be able use Generics and create a more .NET-compliant API.
+        </para>
+      </content>
+    </section>
+
+    <section>
+      <title>Performance</title>
+      <content>
+        <para>
+          While mainstream beliefs may suggest that C# can never be as fast as C, it turns out that with a bit
+          of creative parser design and a few clever optimizations
+          [<externalLink>
+            <linkText>1</linkText>
+            <linkUri>http://jeffreystedfast.blogspot.com/2013/09/optimization-tips-tricks-used-by.html</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>][<externalLink>
+            <linkText>2</linkText>
+            <linkUri>http://jeffreystedfast.blogspot.com/2013/10/optimization-tips-tricks-used-by.html</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>], MimeKit's performance is actually <externalLink>
+            <linkText>on par with GMime</linkText>
+            <linkUri>http://jeffreystedfast.blogspot.com/2014/03/gmime-gets-speed-boost.html</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>.
+        </para>
+        <para>
+          Since GMime is pretty well-known as a high-performance native MIME parser and MimeKit more-or-less
+          matches GMime's performance, it stands to reason that MimeKit is likely unsurpassed in performance in
+          the .NET MIME parser space.
+        </para>
+        <para>
+          For a comparison, as I <externalLink>
+            <linkText>blogged here</linkText>
+            <linkUri>http://jeffreystedfast.blogspot.com/2013/10/optimization-tips-tricks-used-by.html</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink> (I have since optimized MimeKit by at least another 30%), MimeKit is more than 25x faster than
+          OpenPOP.NET, 75x faster than SharpMimeTools, and 65x faster than regex-based parsers. Even the commercial MIME
+          parser offerings such as LimiLabs' Mail.dll and NewtonIdeas' Mime4Net cannot even come close to matching
+          MimeKit's performance (they are both orders of magnitude slower than MimeKit).
+        </para>
+      </content>
+    </section>
+
+    <section>
+      <title>Donate</title>
+      <content>
+        <para>
+          MimeKit and MailKit are personal open source projects that I have put thousands of hours into perfecting
+          by continuously improving the API based on feedback from developers like yourself, writing documentation,
+          and optimizing with the goal of making them the very best email frameworks for .NET. I need your help to
+	  achieve this.
+        </para>
+	<para>
+	  Donating helps pay for things such as web hosting, domain registration and licenses for developer tools
+	  such as a performance profiler, memory profiler, a static code analysis tool, and more.
+	</para>
+        <para>
+          If MimeKit and/or MailKit have been helpful to you, please consider donating. Your contributions will be
+          greatly appreciated.
+        </para>
+        <markup>
+          <p>
+	    <a href="https://paypal.me/pools/c/857bnxBTXg" _target="blank">
+	      <img src="https://www.paypal.com/en_US/i/btn/x-click-but21.gif" alt="Click here to lend your support to MimeKit by making a donation!" border="0" />
+	    </a>
+          </p>
+        </markup>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <link xlink:href="Getting-Started"/>
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

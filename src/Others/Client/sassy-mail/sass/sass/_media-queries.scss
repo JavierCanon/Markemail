@@ -1,0 +1,40 @@
+/* -------------------------------------------
+        Media Queries
+-------------------------------------------- */
+
+center[class=wrapper] {
+  @media screen and (min-width: 401px) and (max-width: 600px) {
+    .four-column .column {
+        max-width: 50% !important;
+    }.three-column .column {
+        max-width: 33% !important;
+    }
+    .two-column .column {
+        max-width: 50% !important;
+    }
+    .left-sidebar .left, .right-sidebar .left {
+      max-width: 20%!important;
+    }
+    .left-sidebar .right, .right-sidebar .right {
+      max-width: 80%!important;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .two-column .column,
+    .three-column .column {
+        max-width: 100% !important;
+    }
+    .two-column img {
+        max-width: 100% !important;
+    }
+    .three-column img {
+        max-width: 50% !important; 
+    }
+    .date{
+      text-align: center;
+    }
+    .mob-hide{
+        display: none;
+    }
+  }
+}

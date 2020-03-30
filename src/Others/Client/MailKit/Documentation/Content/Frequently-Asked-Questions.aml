@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="Frequently-Asked-Questions" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <!--
+    <summary>
+      <para>Optional summary abstract</para>
+    </summary>
+    -->
+
+    <introduction>
+      <autoOutline />
+    </introduction>
+
+    <section address="CompletelyFree">
+      <title>Are MimeKit and MailKit completely free? Can I use them in my proprietary product(s)?</title>
+      <content>
+        <para>
+          Yes. MimeKit and MailKit are both completely free and open source. They are both covered under
+          the
+          <externalLink>
+            <linkText>MIT</linkText>
+            <linkUri>https://opensource.org/licenses/MIT</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink> license.
+        </para>
+      </content>
+    </section>
+    
+    <section address="InvalidSslCertificate">
+      <title>Why do I get 'The remote certificate is invalid according to the validation procedure' when I try to Connect?</title>
+      <content>
+        <para>
+          When you get an exception with that error message, it means that the IMAP, POP3 or SMTP
+          server that you are connecting to is using an SSL certificate that is either expired
+          or untrusted by your system.
+        </para>
+        <para>
+          Often times, mail servers will use self-signed certificates instead of using a certificate
+          that has been signed by a trusted Certificate Authority. When your system is unable to
+          validate the mail server's certificate because it is not signed by a known and trusted
+          Certificate Authority, the above error will occur.
+        </para>
+        <para>
+          You can work around this problem by supplying a custom <externalLink>
+            <linkText>RemoteServerCertificateValidationCallback</linkText>
+            <linkUri>https://msdn.microsoft.com/en-us/library/ms145054</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>
+          and setting it on the client's <codeEntityReference>P:MailKit.MailService.ServerCertificateValidationCallback</codeEntityReference> property.
+        </para>
+        <para>
+          In the most simplest example, you could do something like this (although I would strongly recommend against it in production use):
+        </para>
+        <code language="c#" source="Examples\InvalidSslCertificate.cs" region="Simple"/>
+        <para>
+          Most likely you'll want to instead compare the certificate's <externalLink>
+            <linkText>Thumbprint</linkText>
+            <linkUri>https://msdn.microsoft.com/en-us/library/system.security.cryptography.x509certificates.x509certificate2.thumbprint(v=vs.110).aspx</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>
+          property to a known value that you have verified at a prior date.
+        </para>
+      </content>
+    </section>
+
+    <section address="ProtocolLog">
+      <title>How do I debug SMTP, POP3 and/or IMAP errors?</title>
+      <content>
+        <para>
+          All of MailKit's client implementations have a constructor that takes a nifty
+          <codeEntityReference>T:MailKit.IProtocolLogger</codeEntityReference> interface for logging client/server communications.
+          Out of the box, you can use the handy <codeEntityReference>T:MailKit.ProtocolLogger</codeEntityReference> class. Here are
+          some examples of how to use it:
+        </para>
+        <code language="c#">
+          // log to a file called 'imap.log'
+          var client = new ImapClient (new ProtocolLogger ("imap.log"));
+
+          // log to standard output (i.e. the console)
+          var client = new ImapClient (new ProtocolLogger (Console.OpenStandardOutput ()));
+        </code>
+        <para>
+          Note: When submitting a protocol log as part of a bug report, make sure to scrub any sensitive
+          information including your authentication credentials. This information will generally be the base64
+          encoded blob immediately following an <literal>AUTHENTICATE</literal> or <literal>AUTH</literal> command
+          (depending on the type of server) or the cleartext username and password strings in a <literal>LOGIN</literal> command.
+          The only exception to this case is if you are authenticating with <literal>NTLM</literal> in which case I may need this
+          information, but only if the bug/error is in the authentication step.
+        </para>
+      </content>
+    </section>
+    
+    <section address="GMailHiddenMessages">
+      <title>Why don't I see some of my messages when accessing GMail with POP3?</title>
+      <content>
+        <para>
+          By default, GMail's POP3 server does not behave like a standard POP3 server and hides messages
+          from clients (as well as having other non-standard behavior) that have already been viewed.
+        </para>
+        <para>
+          If you want to configure your GMail POP3 settings to behave the way POP3 is intended to behave,
+          you'll need to log in to your GMail account via your web browser and navigate to the
+          <application>Forwarding and POP/IMAP</application> tab of your
+          <application>GMail Settings</application> page and make the following changes in the
+          <application>POP3 Download</application> section:
+        </para>
+        <list>
+          <listItem>
+            <para>
+              <application>Enable POP for all mail (even if it has already been downloaded)</application>.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              When messages are accessed with POP, <application>keep GMail's copy in the Inbox</application>.
+            </para>
+          </listItem>
+        </list>
+      </content>
+    </section>
+    
+    <section address="GMailAccess">
+      <title>How do I access GMail using MailKit?</title>
+      <content>
+        <para>
+          The first thing that you will need to do is to configure your GMail account to
+          <externalLink>
+            <linkText>enable less secure apps</linkText>
+            <linkUri>https://www.google.com/settings/security/lesssecureapps</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>, or you'll need to use OAuth 2.0 authentication (which is a bit more complex).
+        </para>
+        <para>
+          Then, assuming that your GMail account is <literal>user@gmail.com</literal>, you would use the following
+          code snippet to connect to GMail via IMAP:
+        </para>
+        <code language="c#">
+using (var client = new ImapClient ()) {
+    client.Connect ("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+    client.Authenticate ("user@gmail.com", "password");
+    
+    // do stuff...
+    
+    client.Disconnect (true);
+}
+        </code>
+        <para>
+          Connecting via POP3 or SMTP is identical except for the host names and ports (and, of course, you'd
+          use a Pop3Client or SmtpClient as appropriate).
+        </para>
+        <para>
+          If you decide to authenticate via OAuth 2.0 instead of enabling less secure apps, you'll need to read
+          <externalLink>
+            <linkText>Google's OAuth 2.0 documentation</linkText>
+            <linkUri>https://developers.google.com/identity/protocols/OAuth2</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink> to learn how to do this.
+        </para>
+        <para>
+          Once you obtain an OAuth2 access token, you can use it with MailKit by using the access token to create a new OAuth2 SASL mechanism context and then authenticating with it.
+        </para>
+        <code language="c#">
+var certificate = new X509Certificate2 (@"C:\path\to\certificate.p12", "password", X509KeyStorageFlags.Exportable);
+var credential = new ServiceAccountCredential (new ServiceAccountCredential.Initializer ("your-developer-id@developer.gserviceaccount.com") {
+    // Note: other scopes can be found here: https://developers.google.com/gmail/api/auth/scopes
+    Scopes = new[] { "https://mail.google.com/" },
+    User = "user@gmail.com"
+}.FromCertificate (certificate));
+
+// Note: result will be true if the access token was received successfully
+bool result = await credential.RequestAccessTokenAsync (cancel.Token);
+
+// create an OAuth2 SASL context
+var oauth2 = new SaslMechanismOAuth2 ("user@gmail.com", credential.Token.AccessToken);
+
+// authenticate using the OAuth2 SASL mechanism
+client.Authenticate (oauth2);
+        </code>
+      </content>
+    </section>
+
+    <section address="CreateAttachments">
+      <title>How do I create a message with attachments?</title>
+      <content>
+        <para>
+          To construct a message with attachments, the first thing you'll need to do is create a
+          <literal>multipart/mixed</literal> container which you'll then want to add the message
+          body to first. Once you've added the body, you can then add MIME parts to it that contain
+          the content of the files you'd like to attach, being sure to set the
+          <literal>Content-Disposition</literal> header value to <literal>attachment</literal>.
+          You'll probably also want to set the <literal>filename</literal> parameter on the
+          <literal>Content-Disposition</literal> header as well as the <literal>name</literal>
+          parameter on the <literal>Content-Type</literal> header. The most convenient way to do this
+          is to use the <codeEntityReference qualifyHint="true">
+          P:MimeKit.MimePart.FileName</codeEntityReference> property which will set both parameters
+          for you as well as setting the <literal>Content-Disposition</literal> header value to
+          <literal>attachment</literal> if it has not already been set to something else.
+        </para>
+        <code language="c#" source="Examples\CreateMultipartMixed.cs"/>
+        <para>
+          A simpler way to construct messages with attachments is to take advantage of the
+          <codeEntityReference>T:MimeKit.BodyBuilder</codeEntityReference> class.
+        </para>
+        <code language="c#" source="Examples\BodyBuilder.cs" region="Simple"/>
+        <para>
+          For more information, see <link xlink:href="Creating-Messages">Creating Messages</link>.
+        </para>
+      </content>
+    </section>
+
+    <section address="MessageBody">
+      <title>How do I get the main body of a message?</title>
+      <content>
+        <para>
+          (Note: for the TL;DR version, skip to the end)
+        </para>
+        <para>
+          MIME is a tree structure of parts. There are multiparts which contain other parts
+          (even other multiparts). There are message parts which contain messages. And finally,
+          there are leaf-node parts which contain content.
+        </para>
+        <para>
+          There are a few common message structures:
+        </para>
+        <list class="ordered">
+          <listItem address="MessageBodyExample1">
+            <para>
+              The message contains only a <literal>text/plain</literal> or
+              <literal>text/html</literal> part (easy, just use that).
+            </para>
+          </listItem>
+          <listItem address="MessageBodyExample2">
+            <para>
+              The message contains a <literal>multipart/alternative</literal>
+              which will typically look a bit like this:<markup><pre>
+multipart/alternative
+  text/plain
+  text/html</pre></markup>
+            </para>
+          </listItem>
+          <listItem address="MessageBodyExample3">
+            <para>
+              Same as above, but the html part is inside a <literal>multipart/related</literal> so
+              that it can embed images:<markup><pre>
+multipart/alternative
+  text/plain
+  multipart/related
+    text/html
+    image/jpeg
+    image/png</pre></markup>
+            </para>
+          </listItem>
+          <listItem address="MessageBodyExample4">
+            <para>
+              The message contains a textual body part as well as some attachments:<markup><pre>
+multipart/mixed
+  text/plain
+  application/octet-stream
+  application/zip</pre></markup>
+            </para>
+          </listItem>
+          <listItem address="MessageBodyExample5">
+            <para>
+              The same as above, but with the first part replaced with either
+              <link xlink:href="Frequently-Asked-Questions#MessageBodyExample2">#2</link> or
+              <link xlink:href="Frequently-Asked-Questions#MessageBodyExample3">#3</link>
+              To illustrate:<markup><pre>
+multipart/mixed
+  multipart/alternative
+    text/plain
+    text/html
+  application/octet-stream
+  application/zip</pre></markup>
+            </para>
+            <para>
+              Or:<markup><pre>
+multipart/mixed
+  multipart/alternative
+    text/plain
+    multipart/related
+      text/html
+      image/jpeg
+      image/png
+  application/octet-stream
+  application/zip</pre></markup>
+            </para>
+          </listItem>
+        </list>
+        <para>
+          For your convenience, the <codeEntityReference>T:MimeKit.MimeMessage</codeEntityReference>
+          class has 2 properties that you may find useful:
+          <codeEntityReference>P:MimeKit.MimeMessage.TextBody</codeEntityReference> and
+          <codeEntityReference>P:MimeKit.MimeMessage.HtmlBody</codeEntityReference>.
+        </para>
+        <para>
+          For more information, see <link xlink:href="Working-With-Messages"/>.
+        </para>
+      </content>
+    </section>
+
+    <section address="HasAttachments">
+      <title>How do I tell if a message has attachments?</title>
+      <content>
+        <para>
+          In most cases, a message with a body that has a MIME-type of <literal>multipart/mixed</literal>
+          containing more than a single part probably has attachments. As illustrated above, the first part
+          of a <literal>multipart/mixed</literal> is typically the textual body of the message, but it is
+          not always quite that simple.
+        </para>
+        <para>
+          In general, MIME attachments will have a <literal>Content-Disposition</literal> header with a
+          value of <literal>attachment</literal>. To get the list of body parts matching this criteria,
+          you can use the <codeEntityReference qualifyHint="true">
+          P:MimeKit.MimeMessage.Attachments</codeEntityReference> property.
+        </para>
+        <para>
+          Unfortunately, not all mail clients follow this convention and so you may need to write your
+          own custom logic. For example, you may wish to treat all body parts having a <literal>name</literal>
+          or <literal>filename</literal> parameter set on them:
+        </para>
+        <code language="c#">
+var attachments = message.BodyParts.OfType&lt;MimePart&gt; ().Where (part => !string.IsNullOrEmpty (part.FileName));
+        </code>
+        <para>
+          A more sophisticated approach is to treat body parts not referenced by the main textual body part of
+          the message as attachments. In other words, treat any body part not used for rendering the message
+          as an attachment. For an example on how to do this, consider the following code snippets:
+        </para>
+        <code language="c#" source="Examples\MimeVisitorExamples.cs" region="HtmlPreviewVisitor"/>
+        <para>And the way you'd use this visitor might look something like this:</para>
+        <code language="c#" source="Examples\MimeVisitorExamples.cs" region="RenderMessage"/>
+        <para>
+          Once you've rendered the message using the above technique, you'll have a list of attachments
+          that were not used, even if they did not match the simplistic criteria used by the
+          <codeEntityReference qualifyHint="true">P:MimeKit.MimeMessage.Attachments</codeEntityReference>
+          property.
+        </para>
+      </content>
+    </section>
+    
+    <section address="Serialize">
+      <title>Why doesn't the MimeMessage class implement ISerializable so that I can serialize a
+      message to disk and read it back later?</title>
+      <content>
+        <para>
+          The MimeKit API was designed to use the existing MIME format for serialization. In light
+          of this, the ability to use the .NET serialization API and format did not make much sense
+          to support.
+        </para>
+        <para>
+          You can easily serialize a MimeMessage to a stream using the
+          <codeEntityReference autoUpgrade="true">Overload:MimeKit.MimeMessage.WriteTo</codeEntityReference>
+          methods.
+        </para>
+      </content>
+    </section>
+    
+    <section address="SaveMessages">
+      <title>How do I save messages?</title>
+      <content>
+        <para>
+          One you've got a <codeEntityReference>T:MimeKit.MimeMessage</codeEntityReference>, you can save it to a
+          file using the <codeEntityReference>Overload:MimeKit.MimeMessage.WriteTo</codeEntityReference> method:
+        </para>
+        <code language="c#">message.WriteTo ("message.eml");</code>
+        <para>
+          The <literal>WriteTo</literal> method also has overloads that allow you to write the message to a
+          <literal>Stream</literal> instead.
+        </para>
+        <para>
+          By default, the <literal>WriteTo</literal> method will save the message using DOS line-endings on Windows
+          and Unix line-endings on Unix-based systems such as macOS and Linux. You can override this behavior by
+          passing a <codeEntityReference>T:MimeKit.FormatOptions</codeEntityReference> argument to the method:
+        </para>
+        <code language="c#">
+// clone the default formatting options
+var format = FormatOptions.Default.Clone ();
+
+// override the line-endings to be DOS no matter what platform we are on
+format.NewLineFormat = NewLineFormat.Dos;
+
+message.WriteTo (format, "message.eml");
+        </code>
+      </content>
+    </section>
+    
+    <section address="SaveAttachments">
+      <title>How do I save attachments?</title>
+      <content>
+        <para>
+          If you've already got a <codeEntityReference>T:MimeKit.MimePart</codeEntityReference> that represents
+          the attachment that you'd like to save, here's how you might save it:
+        </para>
+        <code language="c#" source="Examples\AttachmentExamples.cs" region="SaveMimePart" />
+        <para>
+          Pretty simple, right?
+        </para>
+        <para>
+          But what if your attachment is actually a <codeEntityReference>T:MimeKit.MessagePart</codeEntityReference>?
+        </para>
+        <para>
+          To save the content of a <literal>message/rfc822</literal> part, you'd use the following code snippet:
+        </para>
+        <code language="c#" source="Examples\AttachmentExamples.cs" region="SaveMessagePart" />
+        <para>
+          If you are iterating over all of the attachments in a message, you might do something like this:
+        </para>
+        <code language="c#" source="Examples\AttachmentExamples.cs" region="SaveAttachments" />
+      </content>
+    </section>
+
+    <section address="AddressHeaders">
+      <title>How do I get the email addresses in the From, To, and Cc headers?</title>
+      <content>
+        <para>
+          The <codeEntityReference>P:MimeKit.MimeMessage.From</codeEntityReference>,
+          <codeEntityReference>P:MimeKit.MimeMessage.To</codeEntityReference>, and
+          <codeEntityReference>P:MimeKit.MimeMessage.Cc</codeEntityReference>
+          properties of a <codeEntityReference>T:MimeKit.MimeMessage</codeEntityReference>
+          are all of type <codeEntityReference>T:MimeKit.InternetAddressList</codeEntityReference>.
+          An <codeEntityReference>T:MimeKit.InternetAddressList</codeEntityReference> is a list of
+          <codeEntityReference>T:MimeKit.InternetAddress</codeEntityReference> items.
+          This is where some people start to get lost, conceptually, because
+          <codeEntityReference>T:MimeKit.InternetAddress</codeEntityReference> is an
+          abstract class that only really has a
+          <codeEntityReference>P:MimeKit.InternetAddress.Name</codeEntityReference>
+          property.
+        </para>
+        <para>
+          As you've probably already discovered, the
+          <codeEntityReference>P:MimeKit.InternetAddress.Name</codeEntityReference>
+          property contains the name of the person (if available), but what you probably
+          want is his or her email address, not their name. So how do you get it?
+        </para>
+        <para>
+          To get the email address, you'll need to figure out what subclass of address each
+          <codeEntityReference>T:MimeKit.InternetAddress</codeEntityReference> really is.
+          There are 2 direct subclasses of
+          <codeEntityReference>T:MimeKit.InternetAddress</codeEntityReference>. They are:
+          <codeEntityReference>T:MimeKit.GroupAddress</codeEntityReference> and
+          <codeEntityReference>T:MimeKit.MailboxAddress</codeEntityReference>.
+        </para>
+        <para>
+          A <codeEntityReference>T:MimeKit.GroupAddress</codeEntityReference> is a named group
+          of more <codeEntityReference>T:MimeKit.InternetAddress</codeEntityReference> items that
+          are contained within the
+          <codeEntityReference>P:MimeKit.GroupAddress.Members</codeEntityReference> property. To
+          get an idea of what a group address represents, consider the following examples:
+        </para>
+        <para>
+          <literal>
+            To: My Friends: Joey &lt;joey@friends.com&gt;, Monica &lt;monica@friends.com&gt;,
+            "Mrs. Chanandler Bong" &lt;chandler@friends.com&gt;, Ross &lt;ross@friends.com&gt;,
+            Rachel &lt;rachel@friends.com&gt;;
+          </literal>
+        </para>
+        <para>
+          In the above example, the <codeEntityReference>P:MimeKit.MimeMessage.To</codeEntityReference>
+          header's <codeEntityReference>T:MimeKit.InternetAddressList</codeEntityReference> will
+          contain only 1 item which will be a
+          <codeEntityReference>T:MimeKit.GroupAddress</codeEntityReference> with a
+          <codeEntityReference>P:MimeKit.InternetAddress.Name</codeEntityReference> value of
+          <literal>My Friends</literal>. The
+          <codeEntityReference>P:MimeKit.GroupAddress.Members</codeEntityReference> property of
+          the <codeEntityReference>T:MimeKit.GroupAddress</codeEntityReference> will contain 5
+          more <codeEntityReference>T:MimeKit.InternetAddress</codeEntityReference> items (which
+          will all be instances of <codeEntityReference>T:MimeKit.MailboxAddress</codeEntityReference>).
+        </para>
+        <para>
+          The above example, however, is not very likely to ever be seen in messages you deal with.
+          A far more common example would be the one below:
+        </para>
+        <para>
+          <literal>To: undisclosed-recipients:;</literal>
+        </para>
+        <para>
+          Most of the time, the <codeEntityReference>P:MimeKit.MimeMessage.From</codeEntityReference>,
+          <codeEntityReference>P:MimeKit.MimeMessage.To</codeEntityReference>, and
+          <codeEntityReference>P:MimeKit.MimeMessage.Cc</codeEntityReference> headers will only
+          contain mailbox addresses. As you will notice, a
+          <codeEntityReference>T:MimeKit.MailboxAddress</codeEntityReference> has an
+          <codeEntityReference>P:MimeKit.MailboxAddress.Address</codeEntityReference> property
+          which will contain the email address of the mailbox. In the following example, the
+          <codeEntityReference>P:MimeKit.MailboxAddress.Address</codeEntityReference> property
+          will contain the value <literal>john@smith.com</literal>:
+        </para>
+        <para>
+          <literal>To: John Smith &lt;john@smith.com&gt;</literal>
+        </para>
+        <para>
+          If you only care about getting a flattened list of the mailbox addresses in one of
+          the address headers, you can do something like this:
+        </para>
+        <code language="c#">
+foreach (var mailbox in message.To.Mailboxes)
+    Console.WriteLine ("{0}'s email address is {1}", mailbox.Name, mailbox.Address);
+        </code>
+      </content>
+    </section>
+    
+    <section address="UntitledAttachments">
+      <title>Why do attachments with unicode filenames appear as "ATT0####.dat" in Outlook?</title>
+      <content>
+        <para>
+          An attachment filename is stored as a MIME parameter on the <literal>Content-Disposition</literal>
+          header. Unfortunately, the original MIME specifications did not specify a method for encoding
+          non-ascii filenames. In 1997,
+          <externalLink>
+            <linkText>rfc2184</linkText>
+            <linkUri>https://tools.ietf.org/html/rfc2184</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>
+          (later updated by 
+          <externalLink>
+            <linkText>rfc2231</linkText>
+            <linkUri>https://tools.ietf.org/html/rfc2231</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink>) was
+          published which specified an encoding mechanism to use for encoding them. Since there was a window
+          in time where the MIME specifications did not define a way to encode them, some mail client
+          developers decided to use the mechanism described by
+          <externalLink>
+            <linkText>rfc2047</linkText>
+            <linkUri>https://tools.ietf.org/html/rfc2047</linkUri>
+            <linkTarget>_blank</linkTarget>
+          </externalLink> which was meant for encoding
+          non-ASCII text in headers. While this may at first seem logical, the problem with this approach
+          was that rfc2047 encoded-word tokens are not allowed to be in quotes (as well as some other issues)
+          and so another, more appropriate, encoding mechanism was needed.
+        </para>
+        <para>
+          Outlook is one of those mail clients which decided to encode filenames using the mechanism described
+          in rfc2047 and until Outlook 2007, did not support filenames encoded using the mechanism defined in
+          rfc2231.
+        </para>
+        <para>
+          As of MimeKit v1.2.18, it is possible to configure MimeKit to use the rfc2047 encoding mechanism for
+          filenames in the following two ways:
+        </para>
+        <para>
+          The first way is to set the encoding method on each individual
+          <codeEntityReference>T:MimeKit.Parameter</codeEntityReference>:
+        </para>
+        <code language="c#">
+Parameter param;
+
+if (attachment.ContentDisposition.Parameters.TryGetValue ("filename", out param))
+    param.EncodingMethod = ParameterEncodingMethod.Rfc2047;
+        </code>
+        <para>
+          The other way is to use a <codeEntityReference>T:MimeKit.FormatOptions</codeEntityReference>:
+        </para>
+        <code language="c#">
+var options = FormatOptions.Default.Clone ();
+options.ParameterEncodingMethod = ParameterEncodingMethod.Rfc2047;
+
+message.WriteTo (options, stream);
+        </code>
+      </content>
+    </section>
+    
+    <section address="DecryptInlinePGP">
+      <title>How do I decrypt PGP messages that are embedded in the main message text?</title>
+      <content>
+        <para>
+          Some PGP-enabled mail clients, such as <application>Thunderbird</application>, embed
+          encrypted PGP blurbs within the <literal>text/plain</literal> body of the message
+          rather than using the PGP/MIME format that MimeKit prefers.
+        </para>
+        <para>
+          These messages often look something like this:
+        </para>
+        <code language="none" source="Examples\InlinePGPExample.txt"/>
+        <para>
+          To deal with these kinds of messages, MimeKit's
+          <codeEntityReference>T:MimeKit.Cryptography.OpenPgpContext</codeEntityReference>
+          includes a
+          <codeEntityReference>
+            M:MimeKit.Cryptography.OpenPgpContext.DecryptTo(System.IO.Stream,System.IO.Stream,System.Threading.CancellationToken)
+          </codeEntityReference>
+          method which can be used to get the raw decrypted stream.
+        </para>
+        <para>
+          The method variant that has a
+          <codeEntityReference>T:MimeKit.Cryptography.DigitalSignatureCollection</codeEntityReference>
+          output parameter is useful in cases where the encrypted PGP blurb is also digitally signed,
+          allowing you to get your hands on the list of digitial signatures in order for you to verify
+          each of them.
+        </para>
+        <para>
+          To decrypt the sample message above, you could use the following code snippet:
+        </para>
+        <code language="c#" source="Examples\OpenPGPExamples.cs" region="DecryptInlinePGP"/>
+      </content>
+    </section>
+    
+    <section address="Reply">
+      <title>How do I reply to a message using MimeKit?</title>
+      <content>
+        <para>
+          Replying to a message is fairly simple. For the most part, you'd just create the reply message
+          the same way you'd create any other message. There are only a few slight differences:
+        </para>
+        <list class="ordered">
+          <listItem>
+            <para>
+              In the reply message, you'll want to prefix the <literal>Subject</literal> header with
+              <literal>"Re: "</literal> if the prefix doesn't already exist in the message you are
+              replying to (in other words, if you are replying to a message with a <literal>Subject</literal>
+              of <literal>"Re: party tomorrow night!"</literal>, you would not prefix it with another
+              <literal>"Re: "</literal>).
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              You will want to set the reply message's <literal>In-Reply-To</literal> header to the value
+              of the <literal>Message-Id</literal> header in the original message.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              You will want to copy the original message's <literal>References</literal> header into the
+              reply message's <literal>References</literal> header and then append the original message's
+              <literal>Message-Id</literal> header.
+            </para>
+          </listItem>
+          <listItem>
+            <para>
+              You will probably want to "quote" the original message's text in the reply.
+            </para>
+          </listItem>
+        </list>
+        <para>
+          If this logic were to be expressed in code, it might look something like this:
+        </para>
+        <code language="c#" source="Examples\MimeVisitorExamples.cs" region="ReplySimple"/>
+        <para>
+          But what if you wanted to reply to a message and quote the HTML formatting of the original message
+          body (assuming it has an HTML body) while still including the embedded images?
+        </para>
+        <para>
+          This gets a bit more complicated, but it's still doable...
+        </para>
+        <para>
+          The first thing we'd need to do is implement our own <codeEntityReference>T:MimeKit.MimeVisitor</codeEntityReference>
+          to handle this:
+        </para>
+        <code language="c#" source="Examples\MimeVisitorExamples.cs" region="ReplyVisitor"/>
+        <code language="c#" source="Examples\MimeVisitorExamples.cs" region="Reply"/>
+      </content>
+    </section>
+    
+    <section address="Forward">
+      <title>How do I forward a message?</title>
+      <content>
+        <para>
+          There are 2 common ways of forwarding a message: attaching the original message as an attachment and
+          inlining the message body much like replying typically does. Which method you choose is up to you.
+        </para>
+        <para>
+          To forward a message by attaching it as an attachment, you would do do something like this:
+        </para>
+        <code language="c#" source="Examples\ForwardExamples.cs" region="ForwardAttached"/>
+        <para>
+          To forward a message by inlining the original message's text content, you can do something like this:
+        </para>
+        <code language="c#" source="Examples\ForwardExamples.cs" region="ForwardInline"/>
+      </content>
+    </section>
+
+    <section address="UnreadMessages">
+      <title>How do I get all of the unread messages in a folder?</title>
+      <content>
+        <para>
+          The easiest way is to search for all of the messages that do not have the
+          <literal>\Seen</literal> flag on them, like so:
+        </para>
+        <code language="c#">
+foreach (var uid in folder.Search (SearchQuery.NotSeen)) {
+    var message = folder.GetMessage (uid);
+}
+        </code>
+      </content>
+    </section>
+
+    <section address="ParseWebRequestFormData">
+      <title>How would I parse multipart/form-data from an HTTP web request?</title>
+      <content>
+        <para>
+          Since classes like <codeEntityReference>T:System.Net.HttpWebRequest</codeEntityReference>
+          take care of parsing the HTTP headers (which includes the <literal>Content-Type</literal> header)
+          and only offer a content stream to consume, MimeKit provides a way to deal with this using the
+          following two static methods:
+          <codeEntityReference qualifyHint="true">
+            M:MimeKit.MimeEntity.Load(MimeKit.ParserOptions,MimeKit.ContentType,System.IO.Stream,System.Threading.CancellationToken)
+          </codeEntityReference>
+          and
+          <codeEntityReference qualifyHint="true">
+            M:MimeKit.MimeEntity.Load(MimeKit.ContentType,System.IO.Stream,System.Threading.CancellationToken)
+          </codeEntityReference>
+        </para>
+        <para>
+          Here's how you might use these methods:
+        </para>
+        <code language="c#" source="Examples\MultipartFormDataExamples.cs" region="ParseMultipartFormDataSimple"/>
+        <para>
+          If the multipart/form-data HTTP response is expected to be large and you do
+          not wish for the content to be read into memory, you can use the following
+          approach:
+        </para>
+        <code language="c#" source="Examples\MultipartFormDataExamples.cs" region="ParseMultipartFormDataComplex"/>
+      </content>
+    </section>
+
+    <relatedTopics>
+      <!--<link xlink:href="Working-With-Messages"/>-->
+    </relatedTopics>
+  </developerConceptualDocument>
+</topic>

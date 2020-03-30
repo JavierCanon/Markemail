@@ -1,0 +1,63 @@
+
+<i class="fa fa-times remove" aria-hidden="true"></i>
+<i class="fa fa-ellipsis-v drag" aria-hidden="true" title="order"></i>
+  <div class="module_controls">
+		<i class="fa fa-files-o duplicate" aria-hidden="true" title="duplicate"></i>
+		<i class="fa fa-clipboard grab-module-code" aria-hidden="true" title="copy to clipboard" data-action="grabModuleCode"></i>
+		<i class="fa fa-pencil-square-o edit-module-code" aria-hidden="true" title="edit the code" data-action="editModuleCode"></i>
+    <i class="fa fa-sliders" aria-hidden="true"></i>
+    {% if controls == "paragraph" %}
+		  <i class="fa fa-th-list list-build" data-module="list-build" data-route="/emailproject/list_build" data-action="simple-list" aria-hidden="true"></i>
+		{% endif %}
+		{% if controls == "headline" %}
+			<i class="fa fa-usd toggle_sponsored" aria-hidden="true"></i>
+		{% endif %}
+		{% if controls == "header-540" or controls == "header-600" %}
+			<i class="fa" aria-hidden="true" data-linktype="onecol"></i>
+		{% endif %}
+		{% if controls == "four-up" %}
+			<i class="fa fa-link link f1" aria-hidden="true" data-position="one"></i>
+			<i class="fa fa-link link f2" aria-hidden="true" data-position="two"></i>
+			<i class="fa fa-link link f3" aria-hidden="true" data-position="three"></i>
+			<i class="fa fa-link link f4" aria-hidden="true" data-position="four"></i>
+			<i class="fa fa-circle-o toggle" aria-hidden="true"></i>
+		{% endif %}
+		{% if controls == "two-up2" %}
+			<i class="fa left" aria-hidden="true" data-linktype="twocol-left"></i>
+			<i class="fa right" aria-hidden="true" data-linktype="twocol-right"></i>
+		{% endif %}
+		{% if controls == "one-up" %}
+			<i class="fa fa-usd toggle_sponsored" aria-hidden="true" title="toggle sponsored content text"></i>
+			<i class="fa fa-header remove_headline" aria-hidden="true" title="remove the headline bar"></i>
+		{% endif %}
+		{% if controls == "numbered-list" or controls == "signatures" %}
+			<i class="fa fa-plus addRow right fa-1x" aria-hidden="true" title="add row"></i>
+			<i class="fa fa-minus removeRow right fa-1x" aria-hidden="true" title="remove row"></i>
+		{% endif %}
+		{% if controls == "events" %}
+			<i class="fa fa-th-list events-build" data-module="list-build" data-route="/emailproject/ajax" data-action="events-build" aria-hidden="true"></i>
+			<i class="fa fa-plus addEvent right fa-1x" aria-hidden="true" title="add event"></i>
+			<i class="fa fa-minus removeEvent right fa-1x" aria-hidden="true" title="remove event"></i>
+			<i class="fa fa-link link events" aria-hidden="true" data-position="top-right"></i>
+		{% endif %}
+		{% if controls == "signatures" %}
+			<div id="addSignature">
+				<span><input type="checkbox" name="cele" />Candice</span>
+				<span><input type="checkbox" name="rare" checked />Robert</span>
+				<span><input type="checkbox" name="egut" />Edna</span>
+				<span><input type="checkbox" name="swei" />Sarah</span>
+				<span><input type="checkbox" name="jter" />JT69</span>
+				<span><input type="checkbox" name="bhil" />Brian Hilemon</span>
+				<span><input type="checkbox" name="ggra" />Gerry</span>
+				<span><input type="checkbox" name="nbjo" />Nancy</span>
+				<span><input type="checkbox" name="jtim" />Joe Timko</span>
+			</div>
+		{% endif %}
+		{% if colors == true %}
+      <div class="controls-group">
+  			<div class="orange change-background" title="change background to orange" data-color="fddea6" data-bg="http://image.exct.net/lib/fe6e15707166047a7715/m/1/sdta_nl_small_texture_tan.jpg"></div>
+  			<div class="ltblue change-background" title="change background to light blue" data-color="dbe7ef"></div>
+  			<div class="white change-background" title="change background to white" data-color="ffffff"></div>
+      </div>
+		{% endif %}
+		</div>

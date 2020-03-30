@@ -1,0 +1,25 @@
+$sidebar-width: $email-width / 5; 
+/* Changes here require to change outlook conditional */
+
+/* -------------------------------------------
+Sidebar Layout
+-------------------------------------------- */
+.sidebar {
+  @extend .columns;
+  .column {
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .left {
+    max-width: $sidebar-width;
+  }
+  .right {
+    max-width: $email-width - $sidebar-width;
+  }
+  img {
+    width: 100%;
+    max-width: $sidebar-width - ($padding * 2);
+    height: auto;
+  }
+}

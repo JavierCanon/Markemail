@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>My Little Email Builder: V3{% block title %}[Built with Symfony]{% endblock %}</title>
+
+        {# block stylesheets %}{% endblock #}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {# stylesheets 'bundles/css/*' filter='cssrewrite' #}
+          {# change others back to % sign <link rel="stylesheet" href="{{ asset_url }}" /> #}
+        {# endstylesheets #}
+
+        <link rel="stylesheet" href="/bundles/css/all.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+
+
+    </head>
+    <body>
+    <div class="page-wrap">
+
+
+
+
+
+        <header id="header">
+        <a href="index.php">
+        <img src="/images/logo4.png" width="232" height="19" alt=""/></a>
+
+
+
+
+          <div class="nav_menu">
+            <a href="{{ path('emailproject_index')}}">Email Projects</a>
+            <a href="logout.php">Logout</a>
+          </div>
+
+
+
+        </header>
+
+
+
+
+    <div class="first-row row">
+
+</div>
+
+
+
+
+
+        {% block body %}{% endblock %}
+
+
+
+
+        {# Need to use twig query here to find logged in company and load their scripts#}
+
+        </div><!-- End Page Wrap -->
+        <footer>
+        <div class="row">
+        <div class="cols_12-4">
+        <span style="display:block;margin-bottom:3px;color:#fff;">Built with</span>
+        <img src="/images/symfony_logo.png" alt="Symfony"><br>
+       <span style="display:block;margin-bottom:3px;color:#fff;">{{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }}</span>
+        </div>
+        </div>
+        </footer>
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+        <script src="/bundles/app/js/01_croppie.js"></script>
+        <script src="/bundles/app/js/02_jquery.tablesorter.min.js"></script>
+        <script src="/bundles/app/js/03_builderscripts.js"></script>
+        <script src="/bundles/app/js/imagecropandupload.js"></script>
+        <script src="/bundles/app/js/scripts.js"></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="row">
+
+    <h2>Emailproject</h2>
+<div class="first-col cols_12-4">
+    <table class="tablesorter">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ emailproject.id }}</td>
+            </tr>
+            <tr>
+                <th>Email Project Title</th>
+                <td>{{ emailproject.title }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ emailproject.email }}</td>
+            </tr>
+            <tr>
+                <th>Exacttarget_id</th>
+                <td>{{ emailproject.exacttargetid }}</td>
+            </tr>
+
+            <tr>
+                <th>Company</th>
+                <td>{{ emailproject.company }}</td>
+            </tr>
+            <tr>
+                <th>Source</th>
+                <td>{{ emailproject.source }}</td>
+            </tr>
+            <tr>
+                <th>Campaign</th>
+                <td>{{ emailproject.campaign }}</td>
+            </tr>
+            <tr>
+                <th>Medium</th>
+                <td>{{ emailproject.medium }}</td>
+            </tr>
+            <tr>
+                <th>Term</th>
+                <td>{{ emailproject.term }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ emailproject.content }}</td>
+            </tr>
+            <tr>
+                <th>Date Modified</th>
+                <td>{{ emailproject.date_modified }}</td>
+            </tr>            
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('emailproject_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('emailproject_build', { 'id': emailproject.id }) }}">Build</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+    
+    
+    <div class="email_show_container cols_12-8">
+      <div style="width:600px;margin:0 auto;">
+          {% if emailproject.body is empty %}
+          <p>No HTML yet. Get to work!
+         <a class="input button" href="{{ path('emailproject_build', { 'id': emailproject.id }) }}">Start Building</a>
+         </p>
+          {% else %}
+           {{ emailproject.body|raw }}
+          {% endif %}
+      
+     
+      
+
+     
+     
+     
+      </div>
+    </div>
+    </div>
+{% endblock %}

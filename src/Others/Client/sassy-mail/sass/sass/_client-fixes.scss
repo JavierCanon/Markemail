@@ -1,0 +1,16 @@
+.ExternalClass{
+    width: 100%;
+	line-height:100%;
+	p, span, font, td, div {
+		line-height: 100%;
+	}
+}
+.yshortcuts a {
+	border-bottom: none !important;
+}
+div[style*="margin: 16px 0"] { 
+	margin:0 !important; 
+}
+table, table td {
+	border-collapse:collapse;
+}
